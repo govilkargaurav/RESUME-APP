@@ -1,0 +1,6 @@
+framework module Pods_ACCI_CricketUITests {
+  umbrella header "Pods-ACCI_CricketUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
