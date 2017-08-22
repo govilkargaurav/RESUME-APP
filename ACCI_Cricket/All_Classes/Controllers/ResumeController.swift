@@ -8,8 +8,9 @@
 
 import UIKit
 
-class ScoreViewController: UIViewController {
+class ResumeController: UIViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

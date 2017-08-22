@@ -8,7 +8,6 @@ target 'ACCI_Cricket' do
   pod 'ReachabilitySwift'
   pod 'SVProgressHUD'
   pod 'JVFloatLabeledTextField'
-  pod 'IQKeyboardManagerSwift'
 
   # Pods for ACCI_Cricket
 

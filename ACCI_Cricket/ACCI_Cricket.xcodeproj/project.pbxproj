@@ -19,11 +19,12 @@
 		4A16D2D01F470D76008C65F2 /* validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A16D2CF1F470D76008C65F2 /* validator.swift */; };
 		94CB594AEFE80EA356CBD3A8 /* Pods_ACCI_CricketTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4914356FAF68ACF1DDC3D5B8 /* Pods_ACCI_CricketTests.framework */; };
 		BB9EF6EFEB4D8DE2E4B17301 /* Pods_ACCI_Cricket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E47774C3787186C15CF4D06C /* Pods_ACCI_Cricket.framework */; };
+		F4033D411F4BEF0700931CAF /* TxtViewExtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4033D401F4BEF0700931CAF /* TxtViewExtn.swift */; };
 		F44F41C91F48AB1300F6023A /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44F41C51F48AB1300F6023A /* Extention.swift */; };
 		F44F41CA1F48AB1300F6023A /* imageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44F41C61F48AB1300F6023A /* imageExtension.swift */; };
 		F44F41CB1F48AB1300F6023A /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44F41C71F48AB1300F6023A /* RoundButton.swift */; };
 		F44F41CC1F48AB1300F6023A /* roundedBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44F41C81F48AB1300F6023A /* roundedBorderView.swift */; };
-		F4633A261F4984880088B005 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4633A251F4984880088B005 /* ScoreViewController.swift */; };
+		F4633A261F4984880088B005 /* ResumeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4633A251F4984880088B005 /* ResumeController.swift */; };
 		F4633A281F4984A50088B005 /* MatchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4633A271F4984A50088B005 /* MatchResultViewController.swift */; };
 		F4633A2A1F4984BA0088B005 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4633A291F4984BA0088B005 /* MoreViewController.swift */; };
 		F4633A2E1F49872B0088B005 /* HomeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4633A2D1F49872B0088B005 /* HomeCollectionView.swift */; };
@@ -71,11 +72,12 @@
 		BE0A80D94B9E43AB1BE6CF8B /* Pods-ACCI_CricketTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACCI_CricketTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ACCI_CricketTests/Pods-ACCI_CricketTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E47774C3787186C15CF4D06C /* Pods_ACCI_Cricket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACCI_Cricket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDBA6339EC1ED73854E91C51 /* Pods-ACCI_Cricket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACCI_Cricket.release.xcconfig"; path = "Pods/Target Support Files/Pods-ACCI_Cricket/Pods-ACCI_Cricket.release.xcconfig"; sourceTree = "<group>"; };
+		F4033D401F4BEF0700931CAF /* TxtViewExtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxtViewExtn.swift; sourceTree = "<group>"; };
 		F44F41C51F48AB1300F6023A /* Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extention.swift; sourceTree = "<group>"; };
 		F44F41C61F48AB1300F6023A /* imageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imageExtension.swift; sourceTree = "<group>"; };
 		F44F41C71F48AB1300F6023A /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		F44F41C81F48AB1300F6023A /* roundedBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = roundedBorderView.swift; sourceTree = "<group>"; };
-		F4633A251F4984880088B005 /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
+		F4633A251F4984880088B005 /* ResumeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeController.swift; sourceTree = "<group>"; };
 		F4633A271F4984A50088B005 /* MatchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchResultViewController.swift; sourceTree = "<group>"; };
 		F4633A291F4984BA0088B005 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		F4633A2D1F49872B0088B005 /* HomeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionView.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				F44F41C61F48AB1300F6023A /* imageExtension.swift */,
 				F44F41C71F48AB1300F6023A /* RoundButton.swift */,
 				F44F41C81F48AB1300F6023A /* roundedBorderView.swift */,
+				F4033D401F4BEF0700931CAF /* TxtViewExtn.swift */,
 			);
 			path = "Extentions ";
 			sourceTree = "<group>";
@@ -254,7 +257,7 @@
 		F4633A241F49844B0088B005 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F4633A251F4984880088B005 /* ScoreViewController.swift */,
+				F4633A251F4984880088B005 /* ResumeController.swift */,
 				F4633A271F4984A50088B005 /* MatchResultViewController.swift */,
 				F4633A291F4984BA0088B005 /* MoreViewController.swift */,
 			);
@@ -542,14 +545,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ACCI_Cricket/Pods-ACCI_Cricket-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/JVFloatLabeledTextField/JVFloatLabeledTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/ReachabilitySwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JVFloatLabeledTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReachabilitySwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
@@ -566,6 +567,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4033D411F4BEF0700931CAF /* TxtViewExtn.swift in Sources */,
 				4A16D2D01F470D76008C65F2 /* validator.swift in Sources */,
 				4A16D29A1F470CF0008C65F2 /* ViewController.swift in Sources */,
 				F44F41CB1F48AB1300F6023A /* RoundButton.swift in Sources */,
@@ -573,7 +575,7 @@
 				F44F41CC1F48AB1300F6023A /* roundedBorderView.swift in Sources */,
 				F44F41CA1F48AB1300F6023A /* imageExtension.swift in Sources */,
 				4A16D2981F470CEF008C65F2 /* AppDelegate.swift in Sources */,
-				F4633A261F4984880088B005 /* ScoreViewController.swift in Sources */,
+				F4633A261F4984880088B005 /* ResumeController.swift in Sources */,
 				F4F3D3A61F4952C70092F9A9 /* TabbarController.swift in Sources */,
 				F4633A2A1F4984BA0088B005 /* MoreViewController.swift in Sources */,
 				F44F41C91F48AB1300F6023A /* Extention.swift in Sources */,

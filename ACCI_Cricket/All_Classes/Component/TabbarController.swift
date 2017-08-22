@@ -20,6 +20,7 @@ class TabbarController: UITabBarController {
         super.viewDidAppear(animated)
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.isHidden = false
+        self.view.layoutIfNeeded()
     }
     
     func setupTabbar(){
