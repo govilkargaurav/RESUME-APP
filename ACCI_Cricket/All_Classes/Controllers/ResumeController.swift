@@ -9,7 +9,6 @@
 import UIKit
 
 class ResumeController: UIViewController {
-
     
     override func viewDidLoad() {
         super.viewDidLoad()

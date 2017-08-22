@@ -14,13 +14,15 @@ class TabbarController: UITabBarController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupTabbar()
+        self.navigationItem.hidesBackButton = true
+        self.navigationController?.navigationBar.isHidden = false
+//        self.navigationController?.setNavigationBarHidden(false, animated: true) //SHow
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.navigationItem.hidesBackButton = true
-        self.navigationController?.navigationBar.isHidden = false
-        self.view.layoutIfNeeded()
     }
     
     func setupTabbar(){

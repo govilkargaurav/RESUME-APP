@@ -171,30 +171,17 @@
 		4A16D2C81F470D68008C65F2 /* All_Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4ADBF16F1F4C02A10016BA5D /* Utils */,
+				4ADBF16E1F4C02940016BA5D /* Networking */,
+				4ADBF16D1F4C02870016BA5D /* New Group */,
+				4ADBF16C1F4C027B0016BA5D /* DB */,
+				4ADBF16B1F4C026D0016BA5D /* Constant */,
 				F4633A241F49844B0088B005 /* Controllers */,
 				F4FCBD5E1F494DFB00B42554 /* Component */,
-				4A16D2C91F470D68008C65F2 /* Constants */,
-				4A16D2CA1F470D68008C65F2 /* DB */,
 				4A16D2CB1F470D68008C65F2 /* Extentions  */,
-				4A16D2CC1F470D68008C65F2 /* Networking */,
-				4A16D2CD1F470D68008C65F2 /* Utils */,
 				4A16D2CE1F470D68008C65F2 /* Validator */,
 			);
 			path = All_Classes;
-			sourceTree = "<group>";
-		};
-		4A16D2C91F470D68008C65F2 /* Constants */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Constants;
-			sourceTree = "<group>";
-		};
-		4A16D2CA1F470D68008C65F2 /* DB */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DB;
 			sourceTree = "<group>";
 		};
 		4A16D2CB1F470D68008C65F2 /* Extentions  */ = {
@@ -209,26 +196,47 @@
 			path = "Extentions ";
 			sourceTree = "<group>";
 		};
-		4A16D2CC1F470D68008C65F2 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
-		4A16D2CD1F470D68008C65F2 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		4A16D2CE1F470D68008C65F2 /* Validator */ = {
 			isa = PBXGroup;
 			children = (
 				4A16D2CF1F470D76008C65F2 /* validator.swift */,
 			);
 			path = Validator;
+			sourceTree = "<group>";
+		};
+		4ADBF16B1F4C026D0016BA5D /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		4ADBF16C1F4C027B0016BA5D /* DB */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
+		4ADBF16D1F4C02870016BA5D /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		4ADBF16E1F4C02940016BA5D /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		4ADBF16F1F4C02A10016BA5D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		7834531D91EB7B8016864DC1 /* Frameworks */ = {
@@ -469,7 +477,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		56666EF07EC68F20F1C1D1AE /* [CP] Check Pods Manifest.lock */ = {
@@ -487,7 +495,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		6B4ACE68B7AA6517EA4BE96B /* [CP] Copy Pods Resources */ = {
@@ -520,7 +528,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D8C64A06C4F07132C56EB746 /* [CP] Copy Pods Resources */ = {

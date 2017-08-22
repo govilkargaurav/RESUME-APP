@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '70965D9CD173CABA61291AE4367FC53E'
-               BlueprintName = 'ReachabilitySwift'
+               BlueprintIdentifier = '2A4448146C785C426971111F117D773C'
+               BlueprintName = 'JVFloatLabeledTextField'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'ReachabilitySwift.framework'>
+               BuildableName = 'JVFloatLabeledTextField.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
