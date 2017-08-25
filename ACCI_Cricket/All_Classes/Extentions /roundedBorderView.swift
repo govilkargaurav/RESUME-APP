@@ -13,7 +13,7 @@ import QuartzCore
     
     override public func layoutSubviews() {
          super.layoutSubviews()
-        let color = kColor.RGB(red: 175.0, green: 81.0, blue: 88.0).cgColor
+        let color = kColor.RGB(red: 18.0, green: 135.0, blue: 12.0).cgColor
         let shapeLayer:CAShapeLayer = CAShapeLayer()
         let frameSize = self.frame.size
         let shapeRect = CGRect(x: 0, y: 0, width: frameSize.width, height: frameSize.height)

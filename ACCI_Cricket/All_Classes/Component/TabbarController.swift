@@ -7,16 +7,23 @@
 //
 
 import UIKit
+import FirebaseAuth
+
+
+struct GlobleObjects {
+    static var currentUser = Auth.auth().currentUser
+}
 
 class TabbarController: UITabBarController {
 
+  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupTabbar()
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.isHidden = false
-//        self.navigationController?.setNavigationBarHidden(false, animated: true) //SHow
     }
     
     

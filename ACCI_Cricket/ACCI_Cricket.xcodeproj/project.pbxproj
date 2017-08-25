@@ -20,11 +20,12 @@
 		94CB594AEFE80EA356CBD3A8 /* Pods_ACCI_CricketTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4914356FAF68ACF1DDC3D5B8 /* Pods_ACCI_CricketTests.framework */; };
 		BB9EF6EFEB4D8DE2E4B17301 /* Pods_ACCI_Cricket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E47774C3787186C15CF4D06C /* Pods_ACCI_Cricket.framework */; };
 		F4033D411F4BEF0700931CAF /* TxtViewExtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4033D401F4BEF0700931CAF /* TxtViewExtn.swift */; };
+		F40C8AF71F4F5112009BD779 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F40C8AF61F4F5100009BD779 /* GoogleService-Info.plist */; };
 		F44F41C91F48AB1300F6023A /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44F41C51F48AB1300F6023A /* Extention.swift */; };
 		F44F41CA1F48AB1300F6023A /* imageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44F41C61F48AB1300F6023A /* imageExtension.swift */; };
 		F44F41CB1F48AB1300F6023A /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44F41C71F48AB1300F6023A /* RoundButton.swift */; };
 		F44F41CC1F48AB1300F6023A /* roundedBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44F41C81F48AB1300F6023A /* roundedBorderView.swift */; };
-		F4633A261F4984880088B005 /* ResumeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4633A251F4984880088B005 /* ResumeController.swift */; };
+		F4633A261F4984880088B005 /* TimesheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4633A251F4984880088B005 /* TimesheetViewController.swift */; };
 		F4633A281F4984A50088B005 /* MatchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4633A271F4984A50088B005 /* MatchResultViewController.swift */; };
 		F4633A2A1F4984BA0088B005 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4633A291F4984BA0088B005 /* MoreViewController.swift */; };
 		F4633A2E1F49872B0088B005 /* HomeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4633A2D1F49872B0088B005 /* HomeCollectionView.swift */; };
@@ -73,11 +74,12 @@
 		E47774C3787186C15CF4D06C /* Pods_ACCI_Cricket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACCI_Cricket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDBA6339EC1ED73854E91C51 /* Pods-ACCI_Cricket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACCI_Cricket.release.xcconfig"; path = "Pods/Target Support Files/Pods-ACCI_Cricket/Pods-ACCI_Cricket.release.xcconfig"; sourceTree = "<group>"; };
 		F4033D401F4BEF0700931CAF /* TxtViewExtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxtViewExtn.swift; sourceTree = "<group>"; };
+		F40C8AF61F4F5100009BD779 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F44F41C51F48AB1300F6023A /* Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extention.swift; sourceTree = "<group>"; };
 		F44F41C61F48AB1300F6023A /* imageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imageExtension.swift; sourceTree = "<group>"; };
 		F44F41C71F48AB1300F6023A /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		F44F41C81F48AB1300F6023A /* roundedBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = roundedBorderView.swift; sourceTree = "<group>"; };
-		F4633A251F4984880088B005 /* ResumeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeController.swift; sourceTree = "<group>"; };
+		F4633A251F4984880088B005 /* TimesheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesheetViewController.swift; sourceTree = "<group>"; };
 		F4633A271F4984A50088B005 /* MatchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchResultViewController.swift; sourceTree = "<group>"; };
 		F4633A291F4984BA0088B005 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		F4633A2D1F49872B0088B005 /* HomeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionView.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		4A16D28B1F470CEF008C65F2 = {
 			isa = PBXGroup;
 			children = (
+				F40C8AF61F4F5100009BD779 /* GoogleService-Info.plist */,
 				4A16D2C81F470D68008C65F2 /* All_Classes */,
 				4A16D2961F470CEF008C65F2 /* ACCI_Cricket */,
 				4A16D2AE1F470CF0008C65F2 /* ACCI_CricketTests */,
@@ -173,9 +176,7 @@
 			children = (
 				4ADBF16F1F4C02A10016BA5D /* Utils */,
 				4ADBF16E1F4C02940016BA5D /* Networking */,
-				4ADBF16D1F4C02870016BA5D /* New Group */,
 				4ADBF16C1F4C027B0016BA5D /* DB */,
-				4ADBF16B1F4C026D0016BA5D /* Constant */,
 				F4633A241F49844B0088B005 /* Controllers */,
 				F4FCBD5E1F494DFB00B42554 /* Component */,
 				4A16D2CB1F470D68008C65F2 /* Extentions  */,
@@ -204,25 +205,11 @@
 			path = Validator;
 			sourceTree = "<group>";
 		};
-		4ADBF16B1F4C026D0016BA5D /* Constant */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Constant;
-			sourceTree = "<group>";
-		};
 		4ADBF16C1F4C027B0016BA5D /* DB */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = DB;
-			sourceTree = "<group>";
-		};
-		4ADBF16D1F4C02870016BA5D /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		4ADBF16E1F4C02940016BA5D /* Networking */ = {
@@ -265,7 +252,7 @@
 		F4633A241F49844B0088B005 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F4633A251F4984880088B005 /* ResumeController.swift */,
+				F4633A251F4984880088B005 /* TimesheetViewController.swift */,
 				F4633A271F4984A50088B005 /* MatchResultViewController.swift */,
 				F4633A291F4984BA0088B005 /* MoreViewController.swift */,
 			);
@@ -395,6 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A16D2A51F470CF0008C65F2 /* LaunchScreen.storyboard in Resources */,
+				F40C8AF71F4F5112009BD779 /* GoogleService-Info.plist in Resources */,
 				4A16D2A21F470CF0008C65F2 /* Assets.xcassets in Resources */,
 				4A16D29D1F470CF0008C65F2 /* Main.storyboard in Resources */,
 			);
@@ -477,7 +465,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		56666EF07EC68F20F1C1D1AE /* [CP] Check Pods Manifest.lock */ = {
@@ -495,7 +483,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6B4ACE68B7AA6517EA4BE96B /* [CP] Copy Pods Resources */ = {
@@ -528,7 +516,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D8C64A06C4F07132C56EB746 /* [CP] Copy Pods Resources */ = {
@@ -553,15 +541,23 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ACCI_Cricket/Pods-ACCI_Cricket-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/JVFloatLabeledTextField/JVFloatLabeledTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/ReachabilitySwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JVFloatLabeledTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReachabilitySwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -583,7 +579,7 @@
 				F44F41CC1F48AB1300F6023A /* roundedBorderView.swift in Sources */,
 				F44F41CA1F48AB1300F6023A /* imageExtension.swift in Sources */,
 				4A16D2981F470CEF008C65F2 /* AppDelegate.swift in Sources */,
-				F4633A261F4984880088B005 /* ResumeController.swift in Sources */,
+				F4633A261F4984880088B005 /* TimesheetViewController.swift in Sources */,
 				F4F3D3A61F4952C70092F9A9 /* TabbarController.swift in Sources */,
 				F4633A2A1F4984BA0088B005 /* MoreViewController.swift in Sources */,
 				F44F41C91F48AB1300F6023A /* Extention.swift in Sources */,

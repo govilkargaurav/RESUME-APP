@@ -44,7 +44,7 @@ struct kColor {
 
 struct kAlerts {
     static let Messages = "APPLICATION DEVELOPMENT COMPANY ACCI"
-    static let Title = "ACCI CRICKET"
+    static let Title = "HRMS"
     static let AppName = "ACCI CRICKET"
     static let Error : String = "Error"
     static let Success : String = "Error"

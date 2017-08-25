@@ -8,6 +8,11 @@ target 'ACCI_Cricket' do
   pod 'ReachabilitySwift'
   pod 'SVProgressHUD'
   pod 'JVFloatLabeledTextField'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
+
 
   # Pods for ACCI_Cricket
 
