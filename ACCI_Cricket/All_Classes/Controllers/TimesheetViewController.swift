@@ -22,6 +22,8 @@ class TimesheetViewController: UIViewController {
         let ref = Database.database().reference().child("user").child((GlobleObjects.currentUser?.uid)!)
         ref.setValue(["useremail" : (GlobleObjects.currentUser?.email)!])
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

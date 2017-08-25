@@ -174,9 +174,6 @@
 		4A16D2C81F470D68008C65F2 /* All_Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4ADBF16F1F4C02A10016BA5D /* Utils */,
-				4ADBF16E1F4C02940016BA5D /* Networking */,
-				4ADBF16C1F4C027B0016BA5D /* DB */,
 				F4633A241F49844B0088B005 /* Controllers */,
 				F4FCBD5E1F494DFB00B42554 /* Component */,
 				4A16D2CB1F470D68008C65F2 /* Extentions  */,
@@ -203,27 +200,6 @@
 				4A16D2CF1F470D76008C65F2 /* validator.swift */,
 			);
 			path = Validator;
-			sourceTree = "<group>";
-		};
-		4ADBF16C1F4C027B0016BA5D /* DB */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DB;
-			sourceTree = "<group>";
-		};
-		4ADBF16E1F4C02940016BA5D /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
-		4ADBF16F1F4C02A10016BA5D /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		7834531D91EB7B8016864DC1 /* Frameworks */ = {

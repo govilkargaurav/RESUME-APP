@@ -19,7 +19,7 @@ import UIKit
     
     override public func layoutSubviews() {
         super.layoutSubviews()
-        self.layer.cornerRadius = 18.0
+        self.layer.cornerRadius = 70.0
         self.clipsToBounds = true
     }
 }
