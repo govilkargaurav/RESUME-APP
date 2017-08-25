@@ -98,7 +98,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16b-Nm-YQI">
-                                <rect key="frame" x="28" y="506.99999999999994" width="310" height="19.666666666666572"/>
+                                <rect key="frame" x="28" y="506.99999999999994" width="309.66666666666669" height="19.666666666666572"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Do you have an Account? If not">
                                         <attributes>
@@ -125,7 +125,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="resume-icon" translatesAutoresizingMaskIntoConstraints="NO" id="uWT-gL-xJU">
-                                <rect key="frame" x="147" y="87" width="121" height="121"/>
+                                <rect key="frame" x="167" y="107" width="101" height="101"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="uWT-gL-xJU" secondAttribute="height" multiplier="1:1" id="8Lj-50-UAM"/>
                                 </constraints>
