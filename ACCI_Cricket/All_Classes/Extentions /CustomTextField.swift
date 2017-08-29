@@ -20,7 +20,6 @@ import QuartzCore
             border.borderWidth = borderWidth
             self.layer.addSublayer(border)
             self.layer.masksToBounds = true
-        
         //showError()
     }
     
