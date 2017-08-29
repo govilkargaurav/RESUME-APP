@@ -57,19 +57,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xer-Ry-ABB">
-                                <rect key="frame" x="0.0" y="84" width="414" height="652"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S8e-sg-NjI">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="652"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="754-Ry-O1R">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="754-Ry-O1R" customClass="RoundButton" customModule="ACCI_Cricket" customModuleProvider="target">
                                                 <rect key="frame" x="146.66666666666669" y="33" width="121.00000000000006" height="121"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="121" id="UrD-JR-DCr"/>
                                                     <constraint firstAttribute="width" constant="121" id="c7z-K9-QZt"/>
                                                 </constraints>
                                                 <state key="normal" image="userdummy"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="58"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="presentPickerController" destination="TCy-JA-ozp" eventType="touchUpInside" id="s8V-Oo-TF1"/>
+                                                </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z4x-vc-k04" customClass="CustomTextField" customModule="ACCI_Cricket" customModuleProvider="target">
                                                 <rect key="frame" x="28" y="215" width="358" height="42"/>
@@ -118,6 +126,11 @@
                                                 <state key="normal" title="REGISTER">
                                                     <color key="titleColor" red="0.070588235289999995" green="0.52941176469999995" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="19"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="userSignIn:" destination="TCy-JA-ozp" eventType="touchUpInside" id="xvY-7K-rEo"/>
                                                 </connections>
@@ -163,6 +176,7 @@
                     <navigationItem key="navigationItem" id="QRG-o1-6VW"/>
                     <connections>
                         <outlet property="bottomContraintsFromView" destination="g8C-JW-qCm" id="83o-0V-Igb"/>
+                        <outlet property="btnProfileImage" destination="754-Ry-O1R" id="ApE-ID-t7o"/>
                         <outlet property="scrollView" destination="Xer-Ry-ABB" id="C6g-sm-ARN"/>
                         <outlet property="txtUserEmail" destination="Hea-Eg-w9x" id="FQk-5C-vlT"/>
                         <outlet property="txtUserName" destination="z4x-vc-k04" id="CX0-0p-41C"/>

@@ -20,8 +20,13 @@ import UIKit
     override public func layoutSubviews() {
         super.layoutSubviews()
         self.layer.borderWidth = 1.0
-        self.layer.cornerRadius = 19.0
         self.layer.borderColor = kColor.APPCOLOR.cgColor
         self.clipsToBounds = true
+    }
+    
+    @IBInspectable public var cornerRadius : CGFloat = 0{
+         didSet {
+        self.layer.cornerRadius = cornerRadius
+        }
     }
 }

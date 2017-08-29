@@ -22,21 +22,8 @@ import QuartzCore
             self.layer.masksToBounds = true
     }
     
-            
-            self.rightViewMode = .always
-            let emailImgContainer = UIView(frame: CGRect(x:(self.frame.origin.x+self.frame.width)-42, y: self.frame.origin.y, width: 32, height: 32))
-            emailImgContainer.backgroundColor = .black
-            let emailImView = UIImageView(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
-            emailImView.image = #imageLiteral(resourceName: "textFieldError")
-            emailImView.center = emailImgContainer.center
-            emailImgContainer.addSubview(emailImView)
-            self.rightView = emailImgContainer
-            return
-        }
-        
-    }
     
-    @IBInspectable var leftImage : UIImage? {
+    @IBInspectable var rightImage : UIImage? {
         didSet {
             if let image = rightImage{
                 rightViewMode = .always

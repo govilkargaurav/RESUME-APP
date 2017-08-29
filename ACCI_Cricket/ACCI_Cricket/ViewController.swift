@@ -13,6 +13,7 @@ import FirebaseAuth
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var btnProfileImage: UIButton!
     @IBOutlet weak var lblDyanamic: UILabel!
     @IBOutlet weak var txtUserEmail: UITextField!
     @IBOutlet weak var txtUserPassword: UITextField!
@@ -37,10 +38,20 @@ class ViewController: UIViewController {
             } as? Auth
     }
     
+    
+    @IBAction func presentPickerController(){
+        let pickerController = UIImagePickerController()
+        present(pickerController, animated: true, completion: nil)
+        pickerController.delegate = self
+    }
+    
+    
     @IBAction func userSignIn(_ sender: Any) {
         
         //Validate before sign-in or sign-up
-       validateSignin()
+        guard validateSignin() else {
+            return
+        }
         
         // Firebase authentication, If user email is not registered with app already, SIGN-UP. Otherwise SIGN-IN.
         Auth.auth().signIn(withEmail: (self.txtUserEmail?.text)!, password: (self.txtUserPassword?.text)!) { (user, error) in
@@ -69,34 +80,35 @@ class ViewController: UIViewController {
 
     
     //MARK: Function Validator, all at one function, to clean code
-    func validateSignin(){
+    func validateSignin() -> Bool{
         guard self.txtUserEmail?.text != "", self.txtUserPassword?.text != "", self.txtUserName?.text != "" else {
             kAlerts.ShowAlertWithOkButton(title: kAlerts.Title, message: "All fields are mendetory", tag: 1000, cancelTitle: kAlerts.Cancel, presentInController: self)
-            return
+            return false
         }
         
         guard kValidator.isValidateEmail(string: txtUserEmail?.text) else {
             kAlerts.ShowAlertWithOkButton(title: kAlerts.Title, message: "Email is not valid", tag: 1000, cancelTitle: kAlerts.Cancel, presentInController: self)
-            return
+            return false
         }
         
         guard (txtUserPassword?.text?.count)! > 5 else {
             kAlerts.ShowAlertWithOkButton(title: kAlerts.Title, message: "Password must be 6 character long", tag: 1000, cancelTitle: kAlerts.Cancel, presentInController: self)
-            return
+            return false
         }
         
         guard kValidator.isNetworkAvailable() != true else {
             kAlerts.ShowAlertWithOkButton(title: kAppConstant.NetworkReachabilityTitle, message: kAppConstant.NetworkReachabilityAlert, tag: 1000, cancelTitle: kAlerts.Cancel, presentInController: self)
-            return
+            return false
         }
         
         guard (txtUserPassword?.text?.count)! > 5 else {
             kAlerts.ShowAlertWithOkButton(title: kAlerts.Title, message: "Username must have 5 characters", tag: 1000, cancelTitle: kAlerts.Cancel, presentInController: self)
-            return
+            return false
         }
+        
+        return true
+        
     }
-    
-    
     
 }
 
@@ -124,5 +136,24 @@ extension ViewController : UITextFieldDelegate{
         textFieldLocal.resignFirstResponder()
     }
 }
+
+extension ViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let imageProfile = info["UIImagePickerControllerOriginalImage"] as? UIImage{
+            btnProfileImage.setImage(imageProfile, for: .normal)
+            dismiss(animated: true, completion: nil)
+        }
+        
+    }
+    
+    
+    
+    
+}
+
+
+
+
 
 
