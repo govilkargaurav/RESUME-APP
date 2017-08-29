@@ -20,6 +20,7 @@
 		94CB594AEFE80EA356CBD3A8 /* Pods_ACCI_CricketTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4914356FAF68ACF1DDC3D5B8 /* Pods_ACCI_CricketTests.framework */; };
 		BB9EF6EFEB4D8DE2E4B17301 /* Pods_ACCI_Cricket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E47774C3787186C15CF4D06C /* Pods_ACCI_Cricket.framework */; };
 		F4033D411F4BEF0700931CAF /* TxtViewExtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4033D401F4BEF0700931CAF /* TxtViewExtn.swift */; };
+		F405BF2D1F532F19003A2CA9 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405BF2C1F532F19003A2CA9 /* CustomTextField.swift */; };
 		F40C8AF71F4F5112009BD779 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F40C8AF61F4F5100009BD779 /* GoogleService-Info.plist */; };
 		F44F41C91F48AB1300F6023A /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44F41C51F48AB1300F6023A /* Extention.swift */; };
 		F44F41CA1F48AB1300F6023A /* imageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44F41C61F48AB1300F6023A /* imageExtension.swift */; };
@@ -74,6 +75,7 @@
 		E47774C3787186C15CF4D06C /* Pods_ACCI_Cricket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACCI_Cricket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDBA6339EC1ED73854E91C51 /* Pods-ACCI_Cricket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACCI_Cricket.release.xcconfig"; path = "Pods/Target Support Files/Pods-ACCI_Cricket/Pods-ACCI_Cricket.release.xcconfig"; sourceTree = "<group>"; };
 		F4033D401F4BEF0700931CAF /* TxtViewExtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxtViewExtn.swift; sourceTree = "<group>"; };
+		F405BF2C1F532F19003A2CA9 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		F40C8AF61F4F5100009BD779 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F44F41C51F48AB1300F6023A /* Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extention.swift; sourceTree = "<group>"; };
 		F44F41C61F48AB1300F6023A /* imageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imageExtension.swift; sourceTree = "<group>"; };
@@ -174,9 +176,6 @@
 		4A16D2C81F470D68008C65F2 /* All_Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4ADBF16F1F4C02A10016BA5D /* Utils */,
-				4ADBF16E1F4C02940016BA5D /* Networking */,
-				4ADBF16C1F4C027B0016BA5D /* DB */,
 				F4633A241F49844B0088B005 /* Controllers */,
 				F4FCBD5E1F494DFB00B42554 /* Component */,
 				4A16D2CB1F470D68008C65F2 /* Extentions  */,
@@ -193,6 +192,7 @@
 				F44F41C71F48AB1300F6023A /* RoundButton.swift */,
 				F44F41C81F48AB1300F6023A /* roundedBorderView.swift */,
 				F4033D401F4BEF0700931CAF /* TxtViewExtn.swift */,
+				F405BF2C1F532F19003A2CA9 /* CustomTextField.swift */,
 			);
 			path = "Extentions ";
 			sourceTree = "<group>";
@@ -203,27 +203,6 @@
 				4A16D2CF1F470D76008C65F2 /* validator.swift */,
 			);
 			path = Validator;
-			sourceTree = "<group>";
-		};
-		4ADBF16C1F4C027B0016BA5D /* DB */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DB;
-			sourceTree = "<group>";
-		};
-		4ADBF16E1F4C02940016BA5D /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
-		4ADBF16F1F4C02A10016BA5D /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		7834531D91EB7B8016864DC1 /* Frameworks */ = {
@@ -543,6 +522,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-ACCI_Cricket/Pods-ACCI_Cricket-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/JVFloatLabeledTextField/JVFloatLabeledTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/ReachabilitySwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
@@ -553,6 +533,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JVFloatLabeledTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReachabilitySwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
@@ -585,6 +566,7 @@
 				F44F41C91F48AB1300F6023A /* Extention.swift in Sources */,
 				F4633A281F4984A50088B005 /* MatchResultViewController.swift in Sources */,
 				F4633A2E1F49872B0088B005 /* HomeCollectionView.swift in Sources */,
+				F405BF2D1F532F19003A2CA9 /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

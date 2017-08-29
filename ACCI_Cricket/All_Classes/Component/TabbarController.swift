@@ -12,6 +12,8 @@ import FirebaseAuth
 
 struct GlobleObjects {
     static var currentUser = Auth.auth().currentUser
+    static var userNameWD : NSString = ""
+    
 }
 
 class TabbarController: UITabBarController {

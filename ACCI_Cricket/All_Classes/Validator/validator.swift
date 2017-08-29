@@ -9,7 +9,7 @@
 import Foundation
 import SVProgressHUD
 import ReachabilitySwift
-
+import UIKit
 
 func showActivityView(){
     SVProgressHUD.show()
@@ -19,13 +19,24 @@ func hideActivityView(){
     SVProgressHUD.dismiss()
 }
 
+func estimatedHeightOfLabel(text: String, inWhichView currentView : UIView) -> CGFloat {
+    
+    let size = CGSize(width: currentView.frame.width - 16, height: 1000)
+    
+    let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+    
+    let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 10)]
+    
+    let rectangleHeight = String(text).boundingRect(with: size, options: options, attributes: attributes, context: nil).height
+    
+    return rectangleHeight
+}
+
 
 //MARK: Color
 struct kColor {
     static let NavBarBackground = UIColor(red: 0.0/255.0, green: 176.0/255.0, blue: 255.0/255.0, alpha: 1.0)
-    static let NavBarTitle = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0)
-    static let NavBarTint = UIColor.white
-    static let BTRed = UIColor(red: 177.0/255.0, green: 9.0/255.0, blue: 13.0/255.0, alpha: 1.0)
+    static let APPCOLOR = UIColor(red: 18.0/255.0, green: 135.0/255.0, blue: 112.0/255.0, alpha: 1.0)
     
     static let LableTitle = UIColor(red: 51.0/255.0, green: 51.0/255.0, blue: 51.0/255.0, alpha: 1.0)
     static let SeperatorColor = UIColor(red: 178.0/255.0, green: 178.0/255.0, blue: 178.0/255.0, alpha: 1.0)

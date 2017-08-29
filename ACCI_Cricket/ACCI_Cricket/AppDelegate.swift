@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import ReachabilitySwift
 import Firebase
+import IQKeyboardManager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        
+        IQKeyboardManager.shared().isEnabled = true
         let cancelAction = UIAlertAction(title:kAlerts.Ok , style: .default, handler:{ (action:UIAlertAction!) -> Void in
         })
         self.acNetwork.addAction(cancelAction)

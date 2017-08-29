@@ -13,17 +13,24 @@ import FirebaseAuth
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var lblDyanamic: UILabel!
     @IBOutlet weak var txtUserEmail: UITextField!
     @IBOutlet weak var txtUserPassword: UITextField!
+    @IBOutlet weak var txtUserName:
+        UITextField!
+    
+    @IBOutlet weak var bottomContraintsFromView: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var handle : Auth?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = false
         setupFirebaseDB()
     }
+    
     
     func setupFirebaseDB() {
         self.handle = Auth.auth().addStateDidChangeListener { (auth, user) in
@@ -31,7 +38,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func userSignIn(_ sender: Any) {
-    
+        
         //Validate before sign-in or sign-up
        validateSignin()
         
@@ -45,12 +52,9 @@ class ViewController: UIViewController {
                     }
                     let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabbarController") as! TabbarController
                     GlobleObjects.currentUser = user
+                    GlobleObjects.userNameWD = self.txtUserName.text! as NSString
                     self.navigationController?.pushViewController(loginVC, animated: true)
                 }
-            }else{
-                let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabbarController") as! TabbarController
-                GlobleObjects.currentUser = user
-                self.navigationController?.pushViewController(loginVC, animated: true)
             }
         }
         
@@ -68,7 +72,8 @@ class ViewController: UIViewController {
     //MARK: Function Valdator, all at one function, to clean code
 
     func validateSignin(){
-        guard self.txtUserEmail?.text != nil, self.txtUserPassword?.text != nil else {
+        guard self.txtUserEmail?.text != "", self.txtUserPassword?.text != "", self.txtUserName?.text != "" else {
+            kAlerts.ShowAlertWithOkButton(title: kAlerts.Title, message: "All fields are mendetory", tag: 1000, cancelTitle: kAlerts.Cancel, presentInController: self)
             return
         }
         
@@ -86,6 +91,11 @@ class ViewController: UIViewController {
             kAlerts.ShowAlertWithOkButton(title: kAppConstant.NetworkReachabilityTitle, message: kAppConstant.NetworkReachabilityAlert, tag: 1000, cancelTitle: kAlerts.Cancel, presentInController: self)
             return
         }
+        
+        guard (txtUserPassword?.text?.count)! > 5 else {
+            kAlerts.ShowAlertWithOkButton(title: kAlerts.Title, message: "Username must have 5 characters", tag: 1000, cancelTitle: kAlerts.Cancel, presentInController: self)
+            return
+        }
     }
     
     
@@ -94,4 +104,18 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 }
+
+extension ViewController : UITextFieldDelegate{
+    
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let txtField = textField as! CustomTextField
+        txtField.showError()
+    }
+}
+
 
