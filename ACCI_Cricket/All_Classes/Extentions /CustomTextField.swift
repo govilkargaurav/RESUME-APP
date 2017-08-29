@@ -20,12 +20,8 @@ import QuartzCore
             border.borderWidth = borderWidth
             self.layer.addSublayer(border)
             self.layer.masksToBounds = true
-        //showError()
     }
     
-    public func showError(){
-        
-        guard !(self.text?.isEmpty)! else {
             
             self.rightViewMode = .always
             let emailImgContainer = UIView(frame: CGRect(x:(self.frame.origin.x+self.frame.width)-42, y: self.frame.origin.y, width: 32, height: 32))
@@ -42,18 +38,17 @@ import QuartzCore
     
     @IBInspectable var leftImage : UIImage? {
         didSet {
-            if let image = leftImage{
-                leftViewMode = .always
-                let imageView = UIImageView(frame: CGRect(x: 20, y: 0, width: 20, height: 20))
+            if let image = rightImage{
+                rightViewMode = .always
+                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
                 imageView.image = image
                 imageView.tintColor = tintColor
-                let view = UIView(frame : CGRect(x: 0, y: 0, width: 25, height: 20))
+                let view = UIView(frame : CGRect(x: 0, y: 0, width: 25, height: 25))
                 view.addSubview(imageView)
-                leftView = view
+                rightView = view
             }else {
-                leftViewMode = .never
+                rightViewMode = .never
             }
-            
         }
     }
 }

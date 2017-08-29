@@ -57,7 +57,6 @@ class ViewController: UIViewController {
                 }
             }
         }
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -69,8 +68,7 @@ class ViewController: UIViewController {
     }
 
     
-    //MARK: Function Valdator, all at one function, to clean code
-
+    //MARK: Function Validator, all at one function, to clean code
     func validateSignin(){
         guard self.txtUserEmail?.text != "", self.txtUserPassword?.text != "", self.txtUserName?.text != "" else {
             kAlerts.ShowAlertWithOkButton(title: kAlerts.Title, message: "All fields are mendetory", tag: 1000, cancelTitle: kAlerts.Cancel, presentInController: self)
@@ -99,22 +97,31 @@ class ViewController: UIViewController {
     }
     
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 }
 
+
+ //MARK: UITextFieldDelegate Implementation
 extension ViewController : UITextFieldDelegate{
     
-    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+    public func textFieldShouldReturn( _ textField: UITextField) -> Bool {
+        let textFieldLocal  = textField as! CustomTextField
+        textFieldLocal.resignFirstResponder()
         return true
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        let txtField = textField as! CustomTextField
-        txtField.showError()
+        _ = textField as! CustomTextField
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        let textFieldLocal  = textField as! CustomTextField
+        guard (textFieldLocal.text?.count)! > 0 else {
+            textFieldLocal.rightImage = #imageLiteral(resourceName: "textFieldError")
+            return
+        }
+        textFieldLocal.rightImage = nil
+        textFieldLocal.resignFirstResponder()
     }
 }
 
