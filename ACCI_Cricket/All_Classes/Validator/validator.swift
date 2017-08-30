@@ -11,6 +11,16 @@ import SVProgressHUD
 import ReachabilitySwift
 import UIKit
 
+
+
+protocol alertControllerdelegate {
+    func okBtnClicked(dictPara : [ String : String])
+}
+
+struct kDelegate {
+    public var delegate : alertControllerdelegate?
+}
+
 func showActivityView(){
     SVProgressHUD.show()
 }
@@ -76,6 +86,38 @@ struct kAlerts {
         preserntIn.present(alertController, animated: true, completion: nil)
         //        }
     }
+    
+    static func ShowAlertWithOkButtonandTextField(title strTitle:String, message strMessage:String, tag intTag: NSInteger, cancelTitle strCancelTitle:String,okbtnTitle strOkbtnTitle:String, presentInController preserntIn: UIViewController) -> Void {
+        hideActivityView()
+        let alertController = UIAlertController(title: strTitle, message:strMessage, preferredStyle: .alert)
+     
+        let saveAction = UIAlertAction(title: strOkbtnTitle, style: .default, handler: {
+            alert -> Void in
+            
+            let firstTextField = alertController.textFields![0] as UITextField
+            let secondTextField = alertController.textFields![1] as UITextField
+            print("firstName \(String(describing: firstTextField.text)), secondName \(String(describing: secondTextField.text))")
+
+            //kDelegate?.delegate.okBtnClicked(dictPara: ["first" : firstTextField.text!, "second" : secondTextField.text!])
+            
+            
+        })
+        let cancelAction = UIAlertAction(title: strCancelTitle, style: .default, handler: {
+            (action : UIAlertAction!) -> Void in
+            
+        })
+        alertController.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "Email"
+        }
+        alertController.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "Password"
+        }
+        
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+        preserntIn.present(alertController, animated: true, completion: nil)
+    }
+    
     
     static func ShowAlertWithOkButton(title strTitle:String, message strMessage:String, tag intTag: NSInteger, cancelTitle strCancelTitle:String, presentInController preserntIn: UIViewController) -> Void {
         hideActivityView()

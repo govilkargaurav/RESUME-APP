@@ -15,10 +15,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Nav Controller-->
+        <!--Nav View Controller-->
         <scene sceneID="WBa-zA-k2O">
             <objects>
-                <navigationController id="5Uk-Vb-GYZ" customClass="NavController" customModule="ACCI_Cricket" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavController" id="5Uk-Vb-GYZ" customClass="NavViewController" customModule="ACCI_Cricket" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hSr-XC-fiZ">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -47,7 +47,7 @@
         <!--View Controller-->
         <scene sceneID="gKT-Qs-J8V">
             <objects>
-                <viewController id="TCy-JA-ozp" customClass="ViewController" customModule="ACCI_Cricket" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="TCy-JA-ozp" customClass="ViewController" customModule="ACCI_Cricket" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wTz-Bn-Ef0"/>
                         <viewControllerLayoutGuide type="bottom" id="9c8-D9-wd0"/>
@@ -57,10 +57,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xer-Ry-ABB">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="84" width="414" height="652"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S8e-sg-NjI">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                    <view contentMode="scaleToFill" restorationIdentifier="viewController" translatesAutoresizingMaskIntoConstraints="NO" id="S8e-sg-NjI">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="652"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="754-Ry-O1R" customClass="RoundButton" customModule="ACCI_Cricket" customModuleProvider="target">
                                                 <rect key="frame" x="147.33333333333331" y="33" width="120.99999999999994" height="121"/>
@@ -185,7 +185,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rLf-Sm-w96" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-375.36231884057975" y="106.79347826086958"/>
+            <point key="canvasLocation" x="-301" y="108"/>
         </scene>
         <!--SUGGESTIONS-->
         <scene sceneID="JCE-jm-ogY">
@@ -200,11 +200,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="SUGGESTIONS" image="globe_icon" id="cVa-U0-2NK"/>
+                    <navigationItem key="navigationItem" title="SUGGESTIONS" id="5BB-h9-Zrv"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SGW-bi-Ai6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1110" y="385"/>
+            <point key="canvasLocation" x="1835" y="385"/>
         </scene>
         <!--TAKE-OFF-->
         <scene sceneID="Da2-El-Uc6">
@@ -219,11 +219,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="TAKE-OFF" image="more_icon" id="LVK-pZ-NA5"/>
+                    <navigationItem key="navigationItem" title="TAKE-OFF" id="EbU-AT-SJl"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Auf-ks-kl7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1106" y="1050"/>
+            <point key="canvasLocation" x="1835" y="1050"/>
         </scene>
         <!--TIME-SHEET-->
         <scene sceneID="Euo-sh-UA8">
@@ -238,16 +238,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="TIME-SHEET" image="news_feed_icon" id="x5R-qJ-VMb"/>
+                    <navigationItem key="navigationItem" title="TIME-SHEET" id="fwv-rI-0Zs">
+                        <barButtonItem key="rightBarButtonItem" image="logout" springLoaded="YES" id="jHB-xj-rvE">
+                            <inset key="imageInsets" minX="23" minY="0.0" maxX="-4" maxY="0.0"/>
+                            <inset key="largeContentSizeImageInsets" minX="0.0" minY="0.0" maxX="3" maxY="0.0"/>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="logout:" destination="hjn-qW-Ob9" id="fqL-cb-gAc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="db2-r1-FrJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1109" y="-282"/>
+            <point key="canvasLocation" x="1835" y="-282"/>
         </scene>
         <!--Tabbar Controller-->
         <scene sceneID="bxz-ey-yx6">
             <objects>
                 <tabBarController restorationIdentifier="TabbarController" storyboardIdentifier="TabbarController" id="vss-eA-apt" customClass="TabbarController" customModule="ACCI_Cricket" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="0Zm-eH-y43">
+                        <barButtonItem key="rightBarButtonItem" springLoaded="YES" systemItem="refresh" id="g1j-ml-FU6">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Unk-kZ-Fvv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -255,18 +269,94 @@
                         <color key="selectedImageTintColor" red="0.070588235294117646" green="0.52941176470588236" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="hjn-qW-Ob9" kind="relationship" relationship="viewControllers" id="3yA-DD-h0M"/>
-                        <segue destination="2Kf-16-Jdh" kind="relationship" relationship="viewControllers" id="NCo-bb-HJH"/>
-                        <segue destination="220-wN-msC" kind="relationship" relationship="viewControllers" id="Oxq-YC-UOA"/>
+                        <segue destination="wRc-dU-HyR" kind="relationship" relationship="viewControllers" id="3yA-DD-h0M"/>
+                        <segue destination="CcD-bY-EqV" kind="relationship" relationship="viewControllers" id="NCo-bb-HJH"/>
+                        <segue destination="Y1O-VV-nQX" kind="relationship" relationship="viewControllers" id="Oxq-YC-UOA"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="akk-RK-ztj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="329" y="107"/>
+            <point key="canvasLocation" x="393" y="108"/>
+        </scene>
+        <!--TIME-SHEET-->
+        <scene sceneID="rn4-zw-qoO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wRc-dU-HyR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="TIME-SHEET" image="news_feed_icon" id="x5R-qJ-VMb"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UEY-sT-p3z">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.16479161379999999" green="0.47231483460000001" blue="0.41575896740000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hjn-qW-Ob9" kind="relationship" relationship="rootViewController" id="i8p-cg-iWt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYg-MQ-SkE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1108.6956521739132" y="-282.06521739130437"/>
+        </scene>
+        <!--SUGGESTIONS-->
+        <scene sceneID="PUq-rA-ydN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CcD-bY-EqV" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="SUGGESTIONS" image="globe_icon" id="cVa-U0-2NK"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qPk-RF-Ney">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.16479161379999999" green="0.47231483460000001" blue="0.41575896740000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2Kf-16-Jdh" kind="relationship" relationship="rootViewController" id="A5A-Yg-3mu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H21-pW-wRG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1108.6956521739132" y="384.78260869565219"/>
+        </scene>
+        <!--TAKE-OFF-->
+        <scene sceneID="MMO-bF-hNX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Y1O-VV-nQX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="TAKE-OFF" image="more_icon" id="LVK-pZ-NA5"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sWD-Xj-g06">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.16479161379999999" green="0.47231483460000001" blue="0.41575896740000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="220-wN-msC" kind="relationship" relationship="rootViewController" id="fKf-rq-sA2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jso-e6-793" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1105.7971014492755" y="1050"/>
         </scene>
     </scenes>
     <resources>
         <image name="globe_icon" width="32" height="32"/>
+        <image name="logout" width="25" height="25"/>
         <image name="more_icon" width="30" height="30"/>
         <image name="news_feed_icon" width="30" height="30"/>
         <image name="userdummy" width="128" height="128"/>

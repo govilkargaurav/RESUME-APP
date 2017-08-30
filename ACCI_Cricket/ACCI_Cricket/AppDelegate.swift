@@ -11,6 +11,7 @@ import CoreData
 import ReachabilitySwift
 import Firebase
 import IQKeyboardManager
+import FirebaseAuth
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,6 +30,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         self.acNetwork.addAction(cancelAction)
         UINavigationBar.appearance().barStyle = .blackOpaque
+        
+        if Auth.auth().currentUser != nil {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let initViewController: UIViewController = storyBoard.instantiateViewController(withIdentifier: "TabbarController") as! TabbarController
+            self.window?.rootViewController? = initViewController
+        }
+        
         return true
     }
 

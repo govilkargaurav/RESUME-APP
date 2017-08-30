@@ -56,7 +56,6 @@ class ViewController: UIViewController {
             hideActivityView()
             return
         }
-        
         // Firebase authentication, If user email is not registered with app already, SIGN-UP. Otherwise SIGN-IN.
         Auth.auth().signIn(withEmail: (self.txtUserEmail?.text)!, password: (self.txtUserPassword?.text)!) { (user, error) in
             if (error != nil) {
@@ -84,7 +83,18 @@ class ViewController: UIViewController {
                             GlobleObjects.currentUser = user
                             GlobleObjects.userNameWD = self.txtUserName.text as NSString?
                             GlobleObjects.profilePictureURL = profileImageURL as NSString?
-                            self.navigationController?.pushViewController(loginVC, animated: true)
+                            
+                            guard GlobleObjects.currentUser?.uid != nil else {
+                                return
+                            }
+                            
+                            let ref = Database.database().reference().child("user").child((GlobleObjects.currentUser?.uid)!)
+                            ref.setValue(["useremail" : (GlobleObjects.currentUser?.email)!,"username" : GlobleObjects.userNameWD!, "userProfileImageURL" : GlobleObjects.profilePictureURL!])
+                            
+                            UIView.transition(from: (kObjects.acci_cricket_delegate.window?.rootViewController!.view)!, to: loginVC.view, duration: 0.4, options: [.transitionFlipFromRight], completion: {
+                                _ in
+                                kObjects.acci_cricket_delegate.window?.rootViewController = loginVC
+                            })
                             
                         })
                         
@@ -93,6 +103,12 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    func invokealertView(){
+        
+        validator
+    }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

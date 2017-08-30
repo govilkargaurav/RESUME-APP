@@ -26,7 +26,8 @@ class TabbarController: UITabBarController {
         // Do any additional setup after loading the view.
         setupTabbar()
         self.navigationItem.hidesBackButton = true
-        self.navigationController?.navigationBar.isHidden = false
+        
+        
     }
     
     
@@ -40,7 +41,7 @@ class TabbarController: UITabBarController {
         self.tabBar.isTranslucent = false
         let topBorder = CALayer()
         topBorder.frame = CGRect(x: 0, y: 0, width: 1000, height: 0.5)
-        topBorder.backgroundColor = kColor.RGB(red: 175.0, green: 81.0, blue: 88.0).cgColor
+        topBorder.backgroundColor = kColor.RGB(red:18.0, green: 135.0, blue: 112.0).cgColor
         self.tabBar.layer.addSublayer(topBorder)
         self.tabBar.clipsToBounds = true
     }
