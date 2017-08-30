@@ -17,8 +17,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var lblDyanamic: UILabel!
     @IBOutlet weak var txtUserEmail: UITextField!
     @IBOutlet weak var txtUserPassword: UITextField!
-    @IBOutlet weak var txtUserName:
-        UITextField!
+    @IBOutlet weak var txtUserName: UITextField!
+    
+    var imgProfile : UIImage?
     
     @IBOutlet weak var bottomContraintsFromView: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -48,8 +49,11 @@ class ViewController: UIViewController {
     
     @IBAction func userSignIn(_ sender: Any) {
         
+        showActivityView()
+        
         //Validate before sign-in or sign-up
         guard validateSignin() else {
+            hideActivityView()
             return
         }
         
@@ -59,12 +63,32 @@ class ViewController: UIViewController {
                 Auth.auth().createUser(withEmail: self.txtUserEmail.text!, password: self.txtUserPassword.text!) { (user, error) in
                     if (error != nil) {
                         print(error ?? "")
+                        hideActivityView()
                           kAlerts.ShowAlertWithOkButton(title: kAlerts.Title, message: "Check your credentials once again", tag: 1000, cancelTitle: kAlerts.Cancel, presentInController: self)
                     }
-                    let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabbarController") as! TabbarController
-                    GlobleObjects.currentUser = user
-                    GlobleObjects.userNameWD = self.txtUserName.text! as NSString
-                    self.navigationController?.pushViewController(loginVC, animated: true)
+
+                    let storageRef =  Storage.storage().reference(forURL: "gs://hrms-2d575.appspot.com").child("profile_Photos").child((user?.uid)!)
+                    
+                    if let imgProfileTemp = self.imgProfile, let imageData = UIImageJPEGRepresentation(imgProfileTemp, 0.1){
+                        storageRef.putData(imageData, metadata: nil, completion: { (metadata, error) in
+                            
+                            if error  != nil {
+                                hideActivityView()
+                                return
+                            }
+                           let profileImageURL = metadata?.downloadURL()?.absoluteString
+
+                            hideActivityView()
+                            
+                            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabbarController") as! TabbarController
+                            GlobleObjects.currentUser = user
+                            GlobleObjects.userNameWD = self.txtUserName.text as NSString?
+                            GlobleObjects.profilePictureURL = profileImageURL as NSString?
+                            self.navigationController?.pushViewController(loginVC, animated: true)
+                            
+                        })
+                        
+                    }
                 }
             }
         }
@@ -140,16 +164,13 @@ extension ViewController : UITextFieldDelegate{
 extension ViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let imageProfile = info["UIImagePickerControllerOriginalImage"] as? UIImage{
-            btnProfileImage.setImage(imageProfile, for: .normal)
+        if let imgProfile = info["UIImagePickerControllerOriginalImage"] as? UIImage{
+            btnProfileImage.setImage(imgProfile, for: .normal)
+            self.imgProfile  = imgProfile
             dismiss(animated: true, completion: nil)
         }
-        
     }
-    
-    
-    
-    
+
 }
 
 
