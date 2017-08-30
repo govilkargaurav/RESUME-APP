@@ -16,11 +16,7 @@ class TimesheetViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        guard GlobleObjects.currentUser?.uid != nil else {
-            return
-        }
-        let ref = Database.database().reference().child("user").child((GlobleObjects.currentUser?.uid)!)
-        ref.setValue(["useremail" : (GlobleObjects.currentUser?.email)!,"username" : GlobleObjects.userNameWD!])
+      
     }
     
     
