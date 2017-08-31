@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     weak var customAlertAction: DOAlertAction?
     
     
+    @IBOutlet weak var loginLabel: UILabel!
     @IBOutlet weak var btnProfileImage: UIButton!
     @IBOutlet weak var lblDyanamic: UILabel!
     @IBOutlet weak var txtUserEmail: UITextField!
@@ -37,10 +38,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        bottomContraintsFromView.constant =  (loginLabel.frame.origin.y + loginLabel.frame.height + 10) - (self.view.frame.height - 64)
+        
+        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        loginLabel.isUserInteractionEnabled = true
+        loginLabel.addGestureRecognizer(tapgesture)
+        
+        
         self.navigationController?.navigationBar.isHidden = false
         setupFirebaseDB()
     }
     
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        showCustomAlert()
+    }
     
     func setupFirebaseDB() {
         self.handle = Auth.auth().addStateDidChangeListener { (auth, user) in
@@ -57,62 +68,60 @@ class ViewController: UIViewController {
     
     @IBAction func userSignIn(_ sender: Any) {
         
-        showCustomAlert()
-        return
+        showActivityView()
+
+        //Validate before sign-in or sign-up
+        guard validateSignin() else {
+            hideActivityView()
+            return
+        }
         
-//        showActivityView()
-//        
-//        //Validate before sign-in or sign-up
-//        guard validateSignin() else {
-//            hideActivityView()
-//            return
-//        }
-//        // Firebase authentication, If user email is not registered with app already, SIGN-UP. Otherwise SIGN-IN.
-//        Auth.auth().signIn(withEmail: (self.txtUserEmail?.text)!, password: (self.txtUserPassword?.text)!) { (user, error) in
-//            if (error != nil) {
-//                Auth.auth().createUser(withEmail: self.txtUserEmail.text!, password: self.txtUserPassword.text!) { (user, error) in
-//                    if (error != nil) {
-//                        print(error ?? "")
-//                        hideActivityView()
-//                          kAlerts.ShowAlertWithOkButton(title: kAlerts.Title, message: "Check your credentials once again", tag: 1000, cancelTitle: kAlerts.Cancel, presentInController: self)
-//                    }
-//
-//                    let storageRef =  Storage.storage().reference(forURL: "gs://hrms-2d575.appspot.com").child("profile_Photos").child((user?.uid)!)
-//                    
-//                    if let imgProfileTemp = self.imgProfile, let imageData = UIImageJPEGRepresentation(imgProfileTemp, 0.1){
-//                        storageRef.putData(imageData, metadata: nil, completion: { (metadata, error) in
-//                            
-//                            if error  != nil {
-//                                hideActivityView()
-//                                return
-//                            }
-//                           let profileImageURL = metadata?.downloadURL()?.absoluteString
-//
-//                            hideActivityView()
-//                            
-//                            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabbarController") as! TabbarController
-//                            GlobleObjects.currentUser = user
-//                            GlobleObjects.userNameWD = self.txtUserName.text as NSString?
-//                            GlobleObjects.profilePictureURL = profileImageURL as NSString?
-//                            
-//                            guard GlobleObjects.currentUser?.uid != nil else {
-//                                return
-//                            }
-//                            
-//                            let ref = Database.database().reference().child("user").child((GlobleObjects.currentUser?.uid)!)
-//                            ref.setValue(["useremail" : (GlobleObjects.currentUser?.email)!,"username" : GlobleObjects.userNameWD!, "userProfileImageURL" : GlobleObjects.profilePictureURL!])
-//                            
-//                            UIView.transition(from: (kObjects.acci_cricket_delegate.window?.rootViewController!.view)!, to: loginVC.view, duration: 0.4, options: [.transitionFlipFromRight], completion: {
-//                                _ in
-//                                kObjects.acci_cricket_delegate.window?.rootViewController = loginVC
-//                            })
-//                            
-//                        })
-//                        
-//                    }
-//                }
-//            }
-//        }
+        // Firebase authentication, If user email is not registered with app already, SIGN-UP. Otherwise SIGN-IN.
+        Auth.auth().signIn(withEmail: (self.txtUserEmail?.text)!, password: (self.txtUserPassword?.text)!) { (user, error) in
+            if (error != nil) {
+                Auth.auth().createUser(withEmail: self.txtUserEmail.text!, password: self.txtUserPassword.text!) { (user, error) in
+                    if (error != nil) {
+                        print(error ?? "")
+                        hideActivityView()
+                          kAlerts.ShowAlertWithOkButton(title: kAlerts.Title, message: "Check your credentials once again", tag: 1000, cancelTitle: kAlerts.Ok, presentInController: self)
+                    }
+
+                    let storageRef =  Storage.storage().reference(forURL: "gs://hrms-2d575.appspot.com").child("profile_Photos").child((user?.uid)!)
+
+                    if let imgProfileTemp = self.imgProfile, let imageData = UIImageJPEGRepresentation(imgProfileTemp, 0.1){
+                        storageRef.putData(imageData, metadata: nil, completion: { (metadata, error) in
+
+                            if error  != nil {
+                                hideActivityView()
+                                return
+                            }
+                           let profileImageURL = metadata?.downloadURL()?.absoluteString
+
+                            hideActivityView()
+
+                            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabbarController") as! TabbarController
+                            GlobleObjects.currentUser = user
+                            GlobleObjects.userNameWD = self.txtUserName.text as NSString?
+                            GlobleObjects.profilePictureURL = profileImageURL as NSString?
+
+                            guard GlobleObjects.currentUser?.uid != nil else {
+                                return
+                            }
+
+                            let ref = Database.database().reference().child("user").child((GlobleObjects.currentUser?.uid)!)
+                            ref.setValue(["useremail" : (GlobleObjects.currentUser?.email)!,"username" : GlobleObjects.userNameWD!, "userProfileImageURL" : GlobleObjects.profilePictureURL!])
+
+                            UIView.transition(from: (kObjects.acci_cricket_delegate.window?.rootViewController!.view)!, to: loginVC.view, duration: 0.4, options: [.transitionFlipFromRight], completion: {
+                                _ in
+                                kObjects.acci_cricket_delegate.window?.rootViewController = loginVC
+                            })
+
+                        })
+
+                    }
+                }
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -126,28 +135,34 @@ class ViewController: UIViewController {
     
     //MARK: Function Validator, all at one function, to clean code
     func validateSignin() -> Bool{
+        
+        guard self.imgProfile != nil else {
+            kAlerts.ShowAlertWithOkButton(title: kAlerts.Title, message: "You look good! Don't hesitate to share your picture with us", tag: 1000, cancelTitle: kAlerts.Cancel, presentInController: self)
+            return false
+        }
+        
         guard self.txtUserEmail?.text != "", self.txtUserPassword?.text != "", self.txtUserName?.text != "" else {
-            kAlerts.ShowAlertWithOkButton(title: kAlerts.Title, message: "All fields are mendetory", tag: 1000, cancelTitle: kAlerts.Cancel, presentInController: self)
+            kAlerts.ShowAlertWithOkButton(title: kAlerts.Title, message: "Don't be shy, fill out all the fields", tag: 1000, cancelTitle: kAlerts.Ok, presentInController: self)
             return false
         }
         
         guard kValidator.isValidateEmail(string: txtUserEmail?.text) else {
-            kAlerts.ShowAlertWithOkButton(title: kAlerts.Title, message: "Email is not valid", tag: 1000, cancelTitle: kAlerts.Cancel, presentInController: self)
+            kAlerts.ShowAlertWithOkButton(title: kAlerts.Title, message: "oops! Have you entered correct email address? Please check once", tag: 1000, cancelTitle: kAlerts.Ok, presentInController: self)
             return false
         }
         
         guard (txtUserPassword?.text?.count)! > 5 else {
-            kAlerts.ShowAlertWithOkButton(title: kAlerts.Title, message: "Password must be 6 character long", tag: 1000, cancelTitle: kAlerts.Cancel, presentInController: self)
+            kAlerts.ShowAlertWithOkButton(title: kAlerts.Title, message: "We insist to keep your password atleast 6 characters long! Let's give hackers a hard time", tag: 1000, cancelTitle: kAlerts.Ok, presentInController: self)
             return false
         }
         
         guard kValidator.isNetworkAvailable() != true else {
-            kAlerts.ShowAlertWithOkButton(title: kAppConstant.NetworkReachabilityTitle, message: kAppConstant.NetworkReachabilityAlert, tag: 1000, cancelTitle: kAlerts.Cancel, presentInController: self)
+            kAlerts.ShowAlertWithOkButton(title: kAppConstant.NetworkReachabilityTitle, message: kAppConstant.NetworkReachabilityAlert, tag: 1000, cancelTitle: kAlerts.Ok, presentInController: self)
             return false
         }
         
         guard (txtUserPassword?.text?.count)! > 5 else {
-            kAlerts.ShowAlertWithOkButton(title: kAlerts.Title, message: "Username must have 5 characters", tag: 1000, cancelTitle: kAlerts.Cancel, presentInController: self)
+            kAlerts.ShowAlertWithOkButton(title: kAlerts.Title, message: "Username must have 5 characters", tag: 1000, cancelTitle: kAlerts.Ok, presentInController: self)
             return false
         }
         
@@ -189,13 +204,6 @@ class ViewController: UIViewController {
             textField?.font = UIFont(name: "Futura-Medium", size: 15.0)
             textField?.keyboardAppearance = UIKeyboardAppearance.dark
             textField?.returnKeyType = UIReturnKeyType.next
-            
-//            let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
-//            label.text = "EMAIL"
-//            label.font = UIFont(name: "Futura-Medium", size: 15.0)
-//            textField?.leftView = label
-//            textField?.leftViewMode = UITextFieldViewMode.always
-            
             textField?.delegate = self
         }
         
@@ -207,13 +215,6 @@ class ViewController: UIViewController {
             textField?.font = UIFont(name: "Futura-Medium", size: 15.0)
             textField?.keyboardAppearance = UIKeyboardAppearance.dark
             textField?.returnKeyType = UIReturnKeyType.send
-            
-//            let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
-//            label.text = "PASSWORD"
-//            label.font = UIFont(name: "Futura-Medium", size: 15.0)
-//            textField?.leftView = label
-//            textField?.leftViewMode = UITextFieldViewMode.always
-            
             textField?.delegate = self
         }
         
@@ -224,12 +225,32 @@ class ViewController: UIViewController {
         
         let otherAction = DOAlertAction(title: otherButtonTitle, style: .default) { action in
             NSLog("The \"Custom\" alert's other action occured.")
-            
+            showActivityView()
             let textFields = self.customAlertController.textFields as? Array<UITextField>
             if textFields != nil {
-                for textField: UITextField in textFields! {
-                    NSLog("  \(textField.placeholder!): \(String(describing: textField.text))")
+                let textFieldEmail = textFields?[0] as UITextField?
+                let textFieldPassword = textFields?[1] as UITextField?
+                
+                guard kValidator.isValidateEmail(string: textFieldEmail?.text) else{
+                    self.customAlertController.dismiss(animated: true, completion: nil)
+                    hideActivityView()
+                    kAlerts.ShowAlertWithOkButton(title: kAlerts.Title, message: "oops! Have you entered correct email address? Please check once", tag: 1000, cancelTitle: kAlerts.Cancel, presentInController: self)
+                    return
                 }
+                
+                Auth.auth().signIn(withEmail: (textFieldEmail?.text)!, password: (textFieldPassword?.text)!, completion: { (user, error) in
+                    guard (error == nil) else {
+                        self.customAlertController.dismiss(animated: true, completion: nil)
+                        hideActivityView()
+                        kAlerts.ShowAlertWithOkButton(title: kAlerts.Title, message: "oops! Something is wrong with your credentials", tag: 1000, cancelTitle: kAlerts.Cancel, presentInController: self)
+                        return
+                    }
+                    
+                        hideActivityView()
+                       let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabbarController") as! TabbarController
+                        UIView.transition(from: (kObjects.acci_cricket_delegate.window?.rootViewController!.view)!, to: loginVC.view, duration: 0.4, options: [.transitionFlipFromRight], completion: { _ in                                kObjects.acci_cricket_delegate.window?.rootViewController = loginVC
+                    })
+                })
             }
         }
         customAlertAction = otherAction
@@ -289,7 +310,6 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
             dismiss(animated: true, completion: nil)
         }
     }
-
 }
 
 

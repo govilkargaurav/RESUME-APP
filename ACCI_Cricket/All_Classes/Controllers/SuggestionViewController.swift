@@ -8,11 +8,11 @@
 
 import UIKit
 
-class MatchResultViewController: UIViewController {
-
+class SuggestionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        
         // Do any additional setup after loading the view.
     }
 
@@ -21,7 +21,6 @@ class MatchResultViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 
