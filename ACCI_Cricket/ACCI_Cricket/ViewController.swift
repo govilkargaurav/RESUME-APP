@@ -109,7 +109,14 @@ class ViewController: UIViewController {
                             }
 
                             let ref = Database.database().reference().child("user").child((GlobleObjects.currentUser?.uid)!)
-                            ref.setValue(["useremail" : (GlobleObjects.currentUser?.email)!,"username" : GlobleObjects.userNameWD!, "userProfileImageURL" : GlobleObjects.profilePictureURL!])
+                            ref.setValue(["useremail" : (GlobleObjects.currentUser?.email)!,
+                                               "username" : GlobleObjects.userNameWD!,
+                                               "userProfileImageURL" : GlobleObjects.profilePictureURL!,
+                                               "uid" : (GlobleObjects.currentUser?.uid)!])
+                            
+                            let changeRequest  = Auth.auth().currentUser?.createProfileChangeRequest()
+                            changeRequest?.displayName = GlobleObjects.userNameWD! as String
+                            changeRequest?.commitChanges(completion: nil)
 
                             UIView.transition(from: (kObjects.acci_cricket_delegate.window?.rootViewController!.view)!, to: loginVC.view, duration: 0.4, options: [.transitionFlipFromRight], completion: {
                                 _ in
@@ -303,7 +310,7 @@ extension ViewController : UITextFieldDelegate{
 
 extension ViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let imgProfile = info["UIImagePickerControllerOriginalImage"] as? UIImage{
             btnProfileImage.setImage(imgProfile, for: .normal)
             self.imgProfile  = imgProfile

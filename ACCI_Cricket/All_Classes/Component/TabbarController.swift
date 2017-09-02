@@ -14,8 +14,10 @@ struct GlobleObjects {
     static var currentUser = Auth.auth().currentUser
     static var userNameWD : NSString? = ""
     static var profilePictureURL : NSString? = ""
-    
 }
+
+
+
 
 class TabbarController: UITabBarController {
 

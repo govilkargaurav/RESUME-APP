@@ -13,11 +13,31 @@ import FirebaseAuth
 
 class TimesheetViewController: UIViewController {
     
+    var posts = [Posts]()
+    var users = [Users]()
+    var allUserIds = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        fetchPosts()
         // Do any additional setup after loading the view.
     }
+    
+    func fetchPosts(){
+        
+        let ref = Database.database().reference()
+        
+        ref.child("posts").queryOrderedByKey().observeSingleEvent(of: .value, with: { snapshot in
+             let posts = snapshot.value as! [String : AnyObject]
+           print(posts)
+        })
+        ref.removeAllObservers()
+    }
+    
+    
+    
+    
     
     
     @IBAction func logout(_ sender: Any) {

@@ -17,6 +17,8 @@
 		4A16D2B01F470CF0008C65F2 /* ACCI_CricketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A16D2AF1F470CF0008C65F2 /* ACCI_CricketTests.swift */; };
 		4A16D2BB1F470CF0008C65F2 /* ACCI_CricketUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A16D2BA1F470CF0008C65F2 /* ACCI_CricketUITests.swift */; };
 		4A16D2D01F470D76008C65F2 /* validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A16D2CF1F470D76008C65F2 /* validator.swift */; };
+		4A51713F1F59706000611205 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A51713E1F59706000611205 /* Users.swift */; };
+		4A5171411F59707200611205 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5171401F59707200611205 /* Posts.swift */; };
 		4AE274B11F56F23800854976 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE274B01F56F23800854976 /* NavViewController.swift */; };
 		4AED4B051F584CA3006A40F1 /* PictureUploadControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED4B041F584CA3006A40F1 /* PictureUploadControllerViewController.swift */; };
 		94CB594AEFE80EA356CBD3A8 /* Pods_ACCI_CricketTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4914356FAF68ACF1DDC3D5B8 /* Pods_ACCI_CricketTests.framework */; };
@@ -71,6 +73,8 @@
 		4A16D2BA1F470CF0008C65F2 /* ACCI_CricketUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACCI_CricketUITests.swift; sourceTree = "<group>"; };
 		4A16D2BC1F470CF0008C65F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A16D2CF1F470D76008C65F2 /* validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = validator.swift; sourceTree = "<group>"; };
+		4A51713E1F59706000611205 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		4A5171401F59707200611205 /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
 		4AE274B01F56F23800854976 /* NavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		4AED4B041F584CA3006A40F1 /* PictureUploadControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureUploadControllerViewController.swift; sourceTree = "<group>"; };
 		6F3FD1DE421296B993CFAF94 /* Pods-ACCI_CricketUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACCI_CricketUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ACCI_CricketUITests/Pods-ACCI_CricketUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -182,6 +186,7 @@
 		4A16D2C81F470D68008C65F2 /* All_Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4A51713D1F59704400611205 /* Models */,
 				F4633A241F49844B0088B005 /* Controllers */,
 				F4FCBD5E1F494DFB00B42554 /* Component */,
 				4A16D2CB1F470D68008C65F2 /* Extentions  */,
@@ -209,6 +214,15 @@
 				4A16D2CF1F470D76008C65F2 /* validator.swift */,
 			);
 			path = Validator;
+			sourceTree = "<group>";
+		};
+		4A51713D1F59704400611205 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4A51713E1F59706000611205 /* Users.swift */,
+				4A5171401F59707200611205 /* Posts.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		7834531D91EB7B8016864DC1 /* Frameworks */ = {
@@ -566,7 +580,9 @@
 				4AED4B051F584CA3006A40F1 /* PictureUploadControllerViewController.swift in Sources */,
 				4A16D29A1F470CF0008C65F2 /* ViewController.swift in Sources */,
 				F44033611F57C3AE0096772B /* DOAlertController.swift in Sources */,
+				4A51713F1F59706000611205 /* Users.swift in Sources */,
 				F44F41CB1F48AB1300F6023A /* RoundButton.swift in Sources */,
+				4A5171411F59707200611205 /* Posts.swift in Sources */,
 				4A16D2A01F470CF0008C65F2 /* ACCI_Cricket.xcdatamodeld in Sources */,
 				F44F41CC1F48AB1300F6023A /* roundedBorderView.swift in Sources */,
 				4AE274B11F56F23800854976 /* NavViewController.swift in Sources */,

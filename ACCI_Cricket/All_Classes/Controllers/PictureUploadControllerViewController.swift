@@ -7,9 +7,16 @@
 //
 
 import UIKit
+import Firebase
+
+
+
 
 class PictureUploadControllerViewController: UIViewController {
 
+    @IBOutlet weak var imgPost: UIImageView!
+    @IBOutlet weak var textViewPost: TxtViewExtn!
+    var imgProfile : UIImage?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,7 +43,12 @@ class PictureUploadControllerViewController: UIViewController {
         }
         
         let otherAction = DOAlertAction(title: otherButtonTitle, style: .default) { action in
-            NSLog("The \"Other\" alert action sheet's other action occured.")
+            alertController.dismiss(animated: true, completion: {
+                let pickerController = UIImagePickerController()
+                self.present(pickerController, animated: true, completion: nil)
+                pickerController.delegate = self
+            })
+       
         }
         
         // Add the actions.
@@ -45,14 +57,69 @@ class PictureUploadControllerViewController: UIViewController {
         
         present(alertController, animated: true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func postPressed(_ sender: Any) {
+        showActivityView()
+        
+        let uid = Auth.auth().currentUser!.uid
+        let ref = Database.database().reference()
+        let storage = Storage.storage().reference(forURL: "gs://hrms-2d575.appspot.com")
+        
+        let key = ref.child("posts").childByAutoId().key
+        let imageRef = storage.child("posts").child(uid).child("\(key).jpg")
+        
+        let data = UIImageJPEGRepresentation(self.imgProfile!, 0.6)
+        
+        
+        let uploadTask = imageRef.putData(data!, metadata: nil) { (metadata, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+                hideActivityView()
+                return
+            }
+            
+            imageRef.downloadURL(completion: { (url, error) in
+                if let url = url {
+                    let feed = ["userID" : uid,
+                                "pathToImage" : url.absoluteString,
+                                "likes" : 0,
+                                "author" : Auth.auth().currentUser!.displayName!,
+                                "postID" : key,
+                                "postText" : self.textViewPost.text] as [String : Any]
+                    
+                    let postFeed = ["\(key)" : feed]
+                    
+                    ref.child("posts").updateChildValues(postFeed)
+                    hideActivityView()
+                }
+            })
+        }
+        
+        uploadTask.resume()
+        
     }
-    */
 
 }
+
+extension PictureUploadControllerViewController : UITextViewDelegate{
+    
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        self.view.layoutIfNeeded()
+    }
+    
+    
+}
+
+extension PictureUploadControllerViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let imgProfile = info["UIImagePickerControllerOriginalImage"] as? UIImage{
+            //imgPost.setImage(imgProfile, for: .normal)
+            imgPost.image = imgProfile
+            self.imgProfile  = imgProfile
+            dismiss(animated: true, completion: nil)
+        }
+    }
+}
+
