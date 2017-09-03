@@ -35,6 +35,7 @@
 		F4633A281F4984A50088B005 /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4633A271F4984A50088B005 /* SuggestionViewController.swift */; };
 		F4633A2A1F4984BA0088B005 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4633A291F4984BA0088B005 /* MoreViewController.swift */; };
 		F4633A2E1F49872B0088B005 /* HomeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4633A2D1F49872B0088B005 /* HomeCollectionView.swift */; };
+		F47DC86C1F5A931800C19ECF /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47DC86B1F5A931800C19ECF /* Error.swift */; };
 		F4F3D3A61F4952C70092F9A9 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FB6D191F494FAA00B22587 /* TabbarController.swift */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +96,7 @@
 		F4633A271F4984A50088B005 /* SuggestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
 		F4633A291F4984BA0088B005 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		F4633A2D1F49872B0088B005 /* HomeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionView.swift; sourceTree = "<group>"; };
+		F47DC86B1F5A931800C19ECF /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		F4FB6D191F494FAA00B22587 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 		F924E1B224A3F4E835BBF0C9 /* Pods_ACCI_CricketUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACCI_CricketUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -221,6 +223,7 @@
 			children = (
 				4A51713E1F59706000611205 /* Users.swift */,
 				4A5171401F59707200611205 /* Posts.swift */,
+				F47DC86B1F5A931800C19ECF /* Error.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -251,11 +254,11 @@
 		F4633A241F49844B0088B005 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4AE274B01F56F23800854976 /* NavViewController.swift */,
 				F4633A251F4984880088B005 /* TimesheetViewController.swift */,
 				F4633A271F4984A50088B005 /* SuggestionViewController.swift */,
-				F4633A291F4984BA0088B005 /* MoreViewController.swift */,
-				4AE274B01F56F23800854976 /* NavViewController.swift */,
 				4AED4B041F584CA3006A40F1 /* PictureUploadControllerViewController.swift */,
+				F4633A291F4984BA0088B005 /* MoreViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -594,6 +597,7 @@
 				F44F41C91F48AB1300F6023A /* Extention.swift in Sources */,
 				F4633A281F4984A50088B005 /* SuggestionViewController.swift in Sources */,
 				F4633A2E1F49872B0088B005 /* HomeCollectionView.swift in Sources */,
+				F47DC86C1F5A931800C19ECF /* Error.swift in Sources */,
 				F405BF2D1F532F19003A2CA9 /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

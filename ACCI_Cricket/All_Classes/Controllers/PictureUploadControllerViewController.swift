@@ -9,9 +9,6 @@
 import UIKit
 import Firebase
 
-
-
-
 class PictureUploadControllerViewController: UIViewController {
 
     @IBOutlet weak var imgPost: UIImageView!
@@ -59,25 +56,45 @@ class PictureUploadControllerViewController: UIViewController {
     }
 
     @IBAction func postPressed(_ sender: Any) {
+        do {
+            try pictureUploadTask()
+        } catch Errorbase.ConnectionFaild {
+            print("Invalid Selection.")
+            return
+        }catch{
+            print("Something is wrong")
+        }
+      }
+    
+    
+    func pictureUploadTask() throws {
+        
         showActivityView()
         
+        guard kValidator.isNetworkAvailable() else{
+            throw Errorbase.ConnectionFaild
+        }
+        
+        //Get the Autentic Current User & get storage Database referance.
         let uid = Auth.auth().currentUser!.uid
         let ref = Database.database().reference()
-        let storage = Storage.storage().reference(forURL: "gs://hrms-2d575.appspot.com")
+        let storage = Storage.storage().reference(forURL: kAppConstant.FirebaseDBURL)
         
+        //Create New Post Node on Firebase with Unique key init.
         let key = ref.child("posts").childByAutoId().key
         let imageRef = storage.child("posts").child(uid).child("\(key).jpg")
         
+        //Convert Image into NSData
         let data = UIImageJPEGRepresentation(self.imgProfile!, 0.6)
         
         
+        //Start Uploading Image & create feed in Firebase
         let uploadTask = imageRef.putData(data!, metadata: nil) { (metadata, error) in
             if error != nil {
                 print(error!.localizedDescription)
                 hideActivityView()
                 return
             }
-            
             imageRef.downloadURL(completion: { (url, error) in
                 if let url = url {
                     let feed = ["userID" : uid,
@@ -85,7 +102,8 @@ class PictureUploadControllerViewController: UIViewController {
                                 "likes" : 0,
                                 "author" : Auth.auth().currentUser!.displayName!,
                                 "postID" : key,
-                                "postText" : self.textViewPost.text] as [String : Any]
+                                "postText" : self.textViewPost.text,
+                                "timestamp" : Date().toMillis()] as [String : Any]
                     
                     let postFeed = ["\(key)" : feed]
                     
@@ -94,23 +112,18 @@ class PictureUploadControllerViewController: UIViewController {
                 }
             })
         }
-        
         uploadTask.resume()
-        
+    }
     }
 
-}
-
+//MARK : UITextViewDelegate
 extension PictureUploadControllerViewController : UITextViewDelegate{
-    
-    
     func textViewDidEndEditing(_ textView: UITextView) {
         self.view.layoutIfNeeded()
     }
-    
-    
 }
 
+//MARK : UIImagePickerControllerDelegate
 extension PictureUploadControllerViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {

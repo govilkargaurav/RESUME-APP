@@ -118,6 +118,7 @@ struct kAppConstant {
     static let NetworkReachabilityAlert : String = "Sorry, we can't currently refresh the app. Please check your internet connection."
     static let ActivityLoaderSize :CGSize = CGSize(width:40 ,height:40)
     static let ScreenBounds:CGRect = UIScreen.main.bounds
+    static let FirebaseDBURL: String = "gs://hrms-2d575.appspot.com"
 }
 
 struct kObjects {
@@ -320,7 +321,7 @@ struct kValidator {
         print("\(String(describing: string)) isValidatePassword \(predicate.evaluate(with: string))")
         return predicate.evaluate(with: string)
     }
-    
+
     static func isValidateAlphaNumeric(string:String) -> Bool {
         let character:CharacterSet = CharacterSet(charactersIn: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ").inverted
         let strFiltered:String = string.components(separatedBy: character).joined(separator: "")
@@ -369,6 +370,12 @@ struct kValidator {
             isDeviceIdiom = true
         }
         return isDeviceIdiom
+    }
+}
+
+extension Date {
+    func toMillis() -> Int64! {
+        return Int64(self.timeIntervalSince1970 * 1000)
     }
 }
 

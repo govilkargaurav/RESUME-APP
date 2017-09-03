@@ -13,7 +13,7 @@ import FirebaseAuth
 
 class TimesheetViewController: UIViewController {
     
-    var posts = [Posts]()
+    var post = [Posts]()
     var users = [Users]()
     var allUserIds = [String]()
     
@@ -28,17 +28,39 @@ class TimesheetViewController: UIViewController {
         
         let ref = Database.database().reference()
         
-        ref.child("posts").queryOrderedByKey().observeSingleEvent(of: .value, with: { snapshot in
-             let posts = snapshot.value as! [String : AnyObject]
-           print(posts)
+        ref.child("posts").queryOrderedByKey().queryLimited(toFirst: 2).observeSingleEvent(of: .value, with: { snapshot in
+             let postsnap = snapshot.value as! [String : AnyObject]
+            
+            for (_,postVal) in postsnap{
+
+                let posst = Posts()
+                
+                    posst.author = postVal["author"] as? String
+                    posst.likes = postVal["likes"] as? Int
+                    posst.pathToImage = postVal["pathToImage"] as? String
+                    posst.postID = postVal["postID"] as! String
+                    posst.timeStamp =  postVal["timestamp"] as? String
+                    self.post.append(posst)
+            }
+            
+            print(self.post[1])
+            self.getNextElements(lastelement: self.post[1].postID)
         })
         ref.removeAllObservers()
     }
     
-    
-    
-    
-    
+    func getNextElements(lastelement : String) {
+        let ref = Database.database().reference()
+        
+        let query =    ref.child("posts").queryEnding(atValue: lastelement, childKey: "postID")
+        query.queryLimited(toLast: 1).observeSingleEvent(of: .value, with: { snapshot in
+            let posts = snapshot.value as! [String : AnyObject]
+            print(posts)
+            // Do stuff with this page of elements
+            //...
+
+        })
+    }
     
     @IBAction func logout(_ sender: Any) {
         do {

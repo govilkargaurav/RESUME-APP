@@ -15,4 +15,6 @@ class Posts: NSObject {
     var userID: String!
     var postID: String!
     var textPosted : String!
+    var timeStamp : String!
+    
 }

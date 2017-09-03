@@ -37,16 +37,18 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        bottomContraintsFromView.constant =  (loginLabel.frame.origin.y + loginLabel.frame.height + 10) - (self.view.frame.height - 64)
+        // Initiate FirebaseDB
+        setupFirebaseDB()
         
+        //Dyanamic Height of scroll View in Lower resolution devices
+        bottomContraintsFromView.constant =  (loginLabel.frame.origin.y + loginLabel.frame.height + 10) - (self.view.frame.height - 64)
+
+        //Tap on Login lable of Existing users
         let tapgesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         loginLabel.isUserInteractionEnabled = true
         loginLabel.addGestureRecognizer(tapgesture)
-        
-        
         self.navigationController?.navigationBar.isHidden = false
-        setupFirebaseDB()
+        
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
@@ -67,9 +69,8 @@ class ViewController: UIViewController {
     
     
     @IBAction func userSignIn(_ sender: Any) {
-        
         showActivityView()
-
+        
         //Validate before sign-in or sign-up
         guard validateSignin() else {
             hideActivityView()
@@ -86,8 +87,7 @@ class ViewController: UIViewController {
                           kAlerts.ShowAlertWithOkButton(title: kAlerts.Title, message: "Check your credentials once again", tag: 1000, cancelTitle: kAlerts.Ok, presentInController: self)
                     }
 
-                    let storageRef =  Storage.storage().reference(forURL: "gs://hrms-2d575.appspot.com").child("profile_Photos").child((user?.uid)!)
-
+                    let storageRef =  Storage.storage().reference(forURL: kAppConstant.FirebaseDBURL).child("profile_Photos").child((user?.uid)!)
                     if let imgProfileTemp = self.imgProfile, let imageData = UIImageJPEGRepresentation(imgProfileTemp, 0.1){
                         storageRef.putData(imageData, metadata: nil, completion: { (metadata, error) in
 
@@ -308,6 +308,8 @@ extension ViewController : UITextFieldDelegate{
     }
 }
 
+
+//MARK : UIPickerViewDelegate Implementation
 extension ViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
      func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -318,13 +320,4 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
         }
     }
 }
-
-
-
-
-
-
-
-
-
 
