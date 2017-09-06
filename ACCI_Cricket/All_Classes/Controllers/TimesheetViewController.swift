@@ -16,6 +16,10 @@ class TimesheetViewController: UIViewController {
     var post = [Posts]()
     var users = [Users]()
     var allUserIds = [String]()
+    var lastTimestamp:String!
+    var lastObjectKey:String!
+    let posst = Posts()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,40 +31,55 @@ class TimesheetViewController: UIViewController {
     func fetchPosts(){
         
         let ref = Database.database().reference()
-        
-        ref.child("posts").queryOrderedByKey().queryLimited(toFirst: 2).observeSingleEvent(of: .value, with: { snapshot in
-             let postsnap = snapshot.value as! [String : AnyObject]
-            
-            for (_,postVal) in postsnap{
-
-                let posst = Posts()
+        if lastTimestamp == nil{
+            ref.child("posts").queryOrdered(byChild: "timestamp").queryLimited(toLast: 2).observeSingleEvent(of: .value, with: { snapshot in
+                let postsnap = snapshot.value as! [String : AnyObject]
                 
-                    posst.author = postVal["author"] as? String
-                    posst.likes = postVal["likes"] as? Int
-                    posst.pathToImage = postVal["pathToImage"] as? String
-                    posst.postID = postVal["postID"] as! String
-                    posst.timeStamp =  postVal["timestamp"] as? String
-                    self.post.append(posst)
-            }
+                for (_,postVal) in postsnap{
+
+                    self.posst.author = postVal["author"] as? String
+                    self.posst.likes = postVal["likes"] as? Int
+                    self.posst.pathToImage = postVal["pathToImage"] as? String
+                    self.posst.postID = postVal["postID"] as! String
+                    self.posst.timeStamp =  postVal["timestamp"] as? String
+                    self.post.append(self.posst)
+                }
+                self.lastObjectKey = postsnap.first?.key
+                self.lastTimestamp = self.post[0].timeStamp
+                print(self.post.count)
+                self.fetchPosts()
+            })
+            ref.removeAllObservers()
             
-            print(self.post[1])
-            self.getNextElements(lastelement: self.post[1].postID)
-        })
-        ref.removeAllObservers()
+        }else{
+            print(self.post.count)
+            ref.child("posts").queryOrdered(byChild: "timestamp")
+                .queryEnding(atValue: self.lastTimestamp)
+                .queryLimited(toLast: 2).observeSingleEvent(of: .value, with: { snapshot in
+                    let postsnap = snapshot.value as! [String : AnyObject]
+                    for (_,postVal) in postsnap{
+                        if postsnap.first?.key != self.lastObjectKey{
+                            posst.author = postVal["author"] as? String
+                            posst.likes = postVal["likes"] as? Int
+                            posst.pathToImage = postVal["pathToImage"] as? String
+                            posst.postID = postVal["postID"] as! String
+                            posst.timeStamp =  postVal["timestamp"] as? String
+                            self.post.append(posst)
+                        }
+                    }
+                    let sortedArray = self.post.sorted(by: { $0.timeStamp > $1.timeStamp })
+                    for originalPost in sortedArray{
+                        print(originalPost.timeStamp, originalPost.userID)
+                    }
+                    
+                    self.lastObjectKey = postsnap.first?.key
+                    self.lastTimestamp = self.post[0].timeStamp
+                    self.fetchPosts()
+                })
+            ref.removeAllObservers()
+        }
     }
     
-    func getNextElements(lastelement : String) {
-        let ref = Database.database().reference()
-        
-        let query =    ref.child("posts").queryEnding(atValue: lastelement, childKey: "postID")
-        query.queryLimited(toLast: 1).observeSingleEvent(of: .value, with: { snapshot in
-            let posts = snapshot.value as! [String : AnyObject]
-            print(posts)
-            // Do stuff with this page of elements
-            //...
-
-        })
-    }
     
     @IBAction func logout(_ sender: Any) {
         do {
