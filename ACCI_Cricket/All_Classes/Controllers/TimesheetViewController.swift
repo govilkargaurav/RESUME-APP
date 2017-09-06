@@ -24,42 +24,50 @@ class TimesheetViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    
+    // Fetch Posts from Firebase
     func fetchPosts(){
         
         let ref = Database.database().reference()
         
-        ref.child("posts").queryOrderedByKey().queryLimited(toFirst: 2).observeSingleEvent(of: .value, with: { snapshot in
-             let postsnap = snapshot.value as! [String : AnyObject]
+        ref.child("posts").queryOrdered(byChild: "timestamp").queryLimited(toFirst: 3).observeSingleEvent(of: .value, with: { snapshot in
+         
+            let postsnap = snapshot.value as? [String : AnyObject]
             
+            if let postsnap = postsnap{
             for (_,postVal) in postsnap{
-
-                let posst = Posts()
                 
-                    posst.author = postVal["author"] as? String
-                    posst.likes = postVal["likes"] as? Int
-                    posst.pathToImage = postVal["pathToImage"] as? String
-                    posst.postID = postVal["postID"] as! String
-                    posst.timeStamp =  postVal["timestamp"] as? String
-                    self.post.append(posst)
+                let posst = Posts()
+                posst.author = postVal["author"] as? String
+                posst.likes = postVal["likes"] as? Int
+                posst.pathToImage = postVal["pathToImage"] as? String
+                posst.postID = postVal["postID"] as! String
+                posst.timeStamp =  postVal["timestamp"] as? Int
+                posst.textPosted = postVal["postText"] as? String
+                
+                self.post.append(posst)
+                }
             }
-            
-            print(self.post[1])
-            self.getNextElements(lastelement: self.post[1].postID)
+           print(self.post)
+            self.getNextElements(lastelement: self.post[2].timeStamp)
         })
         ref.removeAllObservers()
     }
     
-    func getNextElements(lastelement : String) {
+    
+    //Paging on posts, MAX 10 in 1 shot
+    func getNextElements(lastelement : Int) {
         let ref = Database.database().reference()
-        
-        let query =    ref.child("posts").queryEnding(atValue: lastelement, childKey: "postID")
-        query.queryLimited(toLast: 1).observeSingleEvent(of: .value, with: { snapshot in
-            let posts = snapshot.value as! [String : AnyObject]
-            print(posts)
-            // Do stuff with this page of elements
-            //...
 
-        })
+        ref.child("posts").queryOrdered(byChild: "timestamp")
+                          .queryStarting(atValue: lastelement)
+                          .queryLimited(toFirst: 2)
+                          .observeSingleEvent(of: .value, with: { snapshot in
+                let posts = snapshot.value as? [String : AnyObject]
+                if let posts = posts{
+                    print(posts)
+                }
+            })
     }
     
     @IBAction func logout(_ sender: Any) {

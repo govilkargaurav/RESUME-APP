@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         self.acNetwork.addAction(cancelAction)
         UINavigationBar.appearance().barStyle = .blackOpaque
-        
+        self.createReachailityObject()
         if Auth.auth().currentUser != nil {
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let initViewController: UIViewController = storyBoard.instantiateViewController(withIdentifier: "TabbarController") as! TabbarController
@@ -39,6 +39,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    //MARK: reachability methods
+    func createReachailityObject()->Void {
+        self.reachability = Reachability()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityDidChange), name: ReachabilityChangedNotification, object: nil)
+        do{
+            try self.reachability?.startNotifier()
+        }catch{
+            print("could not start reachability notifier")
+        }
+    }
+    
+    @objc func reachabilityDidChange(notification:NSNotification)->Void {
+        self.reachability = notification.object as? Reachability
+        if self.reachability?.isReachable == false {
+            showActivityView()
+            if self.acNetwork.isBeingPresented == false {
+                self.window?.rootViewController?.present(self.acNetwork, animated: true, completion: nil)
+            }
+            //            var rect = UIScreen.main.bounds
+            //            rect.size.height = (rect.height)-100
+            //            rect.origin.y = 0
+            //            self.vcDrawer.view.bounds = rect
+            //            self.vcDrawer.view.backgroundColor = UIColor.red
+            //             self.addNoNetworkInWindow()
+        }else{
+            hideActivityView()
+            if self.acNetwork.isBeingDismissed == false {
+                self.acNetwork.dismiss(animated: true, completion: nil)
+            }
+            //            self.removeNoNetworkFromWindow()
+            //            self.vcDrawer.view.backgroundColor = UIColor.green
+            //            self.vcDrawer.view.bounds = UIScreen.main.bounds
+        }
+    }
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
