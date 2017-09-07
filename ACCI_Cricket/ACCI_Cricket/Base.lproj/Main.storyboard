@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -224,7 +225,58 @@
                     <view key="view" contentMode="scaleToFill" id="DaH-t7-4mA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vHn-pt-4hB">
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <color key="backgroundColor" red="0.96243724770000005" green="0.96244799110000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zYR-yX-uTT">
+                                    <size key="itemSize" width="412" height="367"/>
+                                    <size key="headerReferenceSize" width="50" height="70"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="CellIdentifier" id="uZd-P2-kAf">
+                                        <rect key="frame" x="1" y="70" width="412" height="367"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="412" height="367"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LJx-Fq-LXe">
+                                                    <rect key="frame" x="0.0" y="0.0" width="412" height="280"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="LJx-Fq-LXe" secondAttribute="trailing" id="3gY-Hw-biL"/>
+                                            <constraint firstItem="LJx-Fq-LXe" firstAttribute="top" secondItem="uZd-P2-kAf" secondAttribute="top" id="MOY-KM-k0H"/>
+                                            <constraint firstAttribute="bottom" secondItem="LJx-Fq-LXe" secondAttribute="bottom" constant="87" id="bz1-5s-RIZ"/>
+                                            <constraint firstItem="LJx-Fq-LXe" firstAttribute="leading" secondItem="uZd-P2-kAf" secondAttribute="leading" id="m5B-Xc-hcs"/>
+                                            <constraint firstItem="LJx-Fq-LXe" firstAttribute="width" secondItem="uZd-P2-kAf" secondAttribute="width" id="twE-c3-vdy"/>
+                                        </constraints>
+                                        <size key="customSize" width="412" height="367"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="header" id="1Tn-ka-kws" customClass="HeaderView" customModule="ACCI_Cricket" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" name="Color"/>
+                                    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="2Kf-16-Jdh" id="mbz-Ge-NCD"/>
+                                    <outlet property="delegate" destination="2Kf-16-Jdh" id="wVc-FZ-kFI"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vHn-pt-4hB" firstAttribute="leading" secondItem="DaH-t7-4mA" secondAttribute="leading" id="0cd-Je-n4W"/>
+                            <constraint firstItem="vHn-pt-4hB" firstAttribute="top" secondItem="Tif-j2-XB9" secondAttribute="bottom" id="Gp5-FX-jj9"/>
+                            <constraint firstItem="JWl-JP-jGn" firstAttribute="top" secondItem="vHn-pt-4hB" secondAttribute="bottom" id="SVh-n0-Yb4"/>
+                            <constraint firstAttribute="trailing" secondItem="vHn-pt-4hB" secondAttribute="trailing" id="neL-AT-BG4"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="SUGGESTIONS" id="5BB-h9-Zrv">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="ui7-XT-reN">
@@ -235,10 +287,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="vHn-pt-4hB" id="hJJ-BJ-DAv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SGW-bi-Ai6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1835" y="385"/>
+            <point key="canvasLocation" x="1833.3333333333335" y="383.96739130434787"/>
         </scene>
         <!--UPLOAD POST-->
         <scene sceneID="jW1-Sj-uOd">
@@ -253,7 +308,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pictureOverlay" translatesAutoresizingMaskIntoConstraints="NO" id="rVe-zc-W2Q">
-                                <rect key="frame" x="20" y="112" width="374" height="281"/>
+                                <rect key="frame" x="20" y="112" width="374" height="280.66666666666669"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="rVe-zc-W2Q" secondAttribute="height" multiplier="4:3" id="gTI-9O-GUS"/>
                                 </constraints>
@@ -490,5 +545,8 @@
         <image name="news_feed_icon" width="30" height="30"/>
         <image name="pictureOverlay" width="256" height="256"/>
         <image name="userdummy" width="128" height="128"/>
+        <namedColor name="Color">
+            <color red="0.83921568629999999" green="0.1137254902" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
     </resources>
 </document>

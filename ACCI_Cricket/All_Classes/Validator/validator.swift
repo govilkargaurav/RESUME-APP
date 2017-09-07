@@ -109,7 +109,7 @@ struct kAlerts {
 }
 
 struct kAppConstant {
-    static let CalenderDateFormat:String = "dd/MM/yyyy"
+    static let CalenderDateFormat:String = "dd-MMM-YYYY HH:MM:SS"
     static let Platform:String = "IOS"
     static let ImageNameServicePlaceHolder : String = "img_placeholder"
     static let ImageNamePlaceHolder : String = "placeholderimage.png"
@@ -376,6 +376,14 @@ struct kValidator {
 extension Date {
     func toMillis() -> Int64! {
         return Int64(self.timeIntervalSince1970 * 1000)
+    }
+    
+    func getCurrentDate(format : String) -> String {
+        
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: date)
     }
 }
 

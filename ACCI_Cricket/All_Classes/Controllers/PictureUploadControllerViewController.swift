@@ -103,7 +103,7 @@ class PictureUploadControllerViewController: UIViewController {
                                 "author" : Auth.auth().currentUser!.displayName!,
                                 "postID" : key,
                                 "postText" : self.textViewPost.text,
-                                "timestamp" : Date().toMillis()] as [String : Any]
+                                "timestamp" : Date().getCurrentDate(format: kAppConstant.CalenderDateFormat)] as [String : Any]
                     
                     let postFeed = ["\(key)" : feed]
                     

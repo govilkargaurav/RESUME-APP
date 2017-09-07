@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2BECBD317A8205C1067BBE11 /* Pods_ACCI_CricketUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F924E1B224A3F4E835BBF0C9 /* Pods_ACCI_CricketUITests.framework */; };
+		4A0F12781F6188BB007959AB /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0F12771F6188BB007959AB /* HeaderView.swift */; };
 		4A16D2981F470CEF008C65F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A16D2971F470CEF008C65F2 /* AppDelegate.swift */; };
 		4A16D29A1F470CF0008C65F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A16D2991F470CEF008C65F2 /* ViewController.swift */; };
 		4A16D29D1F470CF0008C65F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A16D29B1F470CF0008C65F2 /* Main.storyboard */; };
@@ -59,6 +60,7 @@
 /* Begin PBXFileReference section */
 		45FB5FAB2E81A39DA9503F1E /* Pods-ACCI_CricketUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACCI_CricketUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ACCI_CricketUITests/Pods-ACCI_CricketUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4914356FAF68ACF1DDC3D5B8 /* Pods_ACCI_CricketTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACCI_CricketTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A0F12771F6188BB007959AB /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		4A16D2941F470CEF008C65F2 /* ACCI_Cricket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACCI_Cricket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A16D2971F470CEF008C65F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A16D2991F470CEF008C65F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				4A51713E1F59706000611205 /* Users.swift */,
 				4A5171401F59707200611205 /* Posts.swift */,
 				F47DC86B1F5A931800C19ECF /* Error.swift */,
+				4A0F12771F6188BB007959AB /* HeaderView.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				F44033611F57C3AE0096772B /* DOAlertController.swift in Sources */,
 				4A51713F1F59706000611205 /* Users.swift in Sources */,
 				F44F41CB1F48AB1300F6023A /* RoundButton.swift in Sources */,
+				4A0F12781F6188BB007959AB /* HeaderView.swift in Sources */,
 				4A5171411F59707200611205 /* Posts.swift in Sources */,
 				4A16D2A01F470CF0008C65F2 /* ACCI_Cricket.xcdatamodeld in Sources */,
 				F44F41CC1F48AB1300F6023A /* roundedBorderView.swift in Sources */,
