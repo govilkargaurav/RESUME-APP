@@ -37,6 +37,7 @@
 		F4633A2A1F4984BA0088B005 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4633A291F4984BA0088B005 /* MoreViewController.swift */; };
 		F4633A2E1F49872B0088B005 /* HomeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4633A2D1F49872B0088B005 /* HomeCollectionView.swift */; };
 		F47DC86C1F5A931800C19ECF /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47DC86B1F5A931800C19ECF /* Error.swift */; };
+		F49CD3CD1F61C78E0059741B /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49CD3CC1F61C78E0059741B /* FeedCell.swift */; };
 		F4F3D3A61F4952C70092F9A9 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FB6D191F494FAA00B22587 /* TabbarController.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +100,7 @@
 		F4633A291F4984BA0088B005 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		F4633A2D1F49872B0088B005 /* HomeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionView.swift; sourceTree = "<group>"; };
 		F47DC86B1F5A931800C19ECF /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		F49CD3CC1F61C78E0059741B /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		F4FB6D191F494FAA00B22587 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 		F924E1B224A3F4E835BBF0C9 /* Pods_ACCI_CricketUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACCI_CricketUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -227,6 +229,7 @@
 				4A5171401F59707200611205 /* Posts.swift */,
 				F47DC86B1F5A931800C19ECF /* Error.swift */,
 				4A0F12771F6188BB007959AB /* HeaderView.swift */,
+				F49CD3CC1F61C78E0059741B /* FeedCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -549,6 +552,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ACCI_Cricket/Pods-ACCI_Cricket-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
@@ -560,6 +565,8 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
@@ -600,6 +607,7 @@
 				F4633A2A1F4984BA0088B005 /* MoreViewController.swift in Sources */,
 				F44F41C91F48AB1300F6023A /* Extention.swift in Sources */,
 				F4633A281F4984A50088B005 /* SuggestionViewController.swift in Sources */,
+				F49CD3CD1F61C78E0059741B /* FeedCell.swift in Sources */,
 				F4633A2E1F49872B0088B005 /* HomeCollectionView.swift in Sources */,
 				F47DC86C1F5A931800C19ECF /* Error.swift in Sources */,
 				F405BF2D1F532F19003A2CA9 /* CustomTextField.swift in Sources */,

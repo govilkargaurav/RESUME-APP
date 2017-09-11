@@ -226,7 +226,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vHn-pt-4hB">
+                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vHn-pt-4hB">
                                 <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <color key="backgroundColor" red="0.96243724770000005" green="0.96244799110000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zYR-yX-uTT">
@@ -236,7 +236,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="CellIdentifier" id="uZd-P2-kAf">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="CellIdentifier" id="uZd-P2-kAf" customClass="FeedCell" customModule="ACCI_Cricket" customModuleProvider="target">
                                         <rect key="frame" x="1" y="70" width="412" height="367"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -256,6 +256,9 @@
                                             <constraint firstItem="LJx-Fq-LXe" firstAttribute="width" secondItem="uZd-P2-kAf" secondAttribute="width" id="twE-c3-vdy"/>
                                         </constraints>
                                         <size key="customSize" width="412" height="367"/>
+                                        <connections>
+                                            <outlet property="imgViewSqure" destination="LJx-Fq-LXe" id="fOZ-ax-jQ3"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="header" id="1Tn-ka-kws" customClass="HeaderView" customModule="ACCI_Cricket" customModuleProvider="target">
@@ -293,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SGW-bi-Ai6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1833.3333333333335" y="383.96739130434787"/>
+            <point key="canvasLocation" x="1833" y="426"/>
         </scene>
         <!--UPLOAD POST-->
         <scene sceneID="jW1-Sj-uOd">
@@ -407,7 +410,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Auf-ks-kl7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1835" y="1050"/>
+            <point key="canvasLocation" x="1833" y="1228"/>
         </scene>
         <!--TIME-SHEET-->
         <scene sceneID="Euo-sh-UA8">
