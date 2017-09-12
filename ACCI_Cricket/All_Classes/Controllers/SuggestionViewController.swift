@@ -14,6 +14,9 @@ let identifier = "CellIdentifier"
 
 class SuggestionViewController: UIViewController {
     
+
+    @IBOutlet weak var imgViewUserProfile: RoundImage!
+    @IBOutlet weak var lblUserProfileName: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     var post = [Posts]()
     var users = [Users]()
@@ -39,70 +42,75 @@ class SuggestionViewController: UIViewController {
     func fetchPosts(){
         showActivityView()
         let ref = Database.database().reference()
-        ref.child("user").queryOrdered(byChild: "uid")
-            .queryEqual(toValue: "7RC734df3cd2UQkBmx0D8IjJb8F3")
-            .observeSingleEvent(of: .value, with: { snapshot in
-//                for child in snapshot.children {
-//                    let dict = child as! Dictionary<String,String>
-//                    let name = dict["Name"] as! String
-//                    print(name)
-//                }
-                let postsnap = snapshot.value as! [String : AnyObject]
-                for (_,postVal) in postsnap{
-                    print(postVal)
-                }
-            })
-//        if lastTimestamp == nil{
-//            ref.child("posts")
-//                .queryOrdered(byChild: "timestamp")
-//                .queryLimited(toLast: 2)
-//                .observeSingleEvent(of: .value, with: { snapshot in
-//                    let postsnap = snapshot.value as! [String : AnyObject]
-//
-//                    for (_,postVal) in postsnap{
-//                        let posst = Posts()
-//                        posst.author = postVal["author"] as? String
-//                        posst.likes = postVal["likes"] as? Int
-//                        posst.pathToImage = postVal["pathToImage"] as? String
-//                        posst.postID = postVal["postID"] as! String
-//                        posst.timeStamp =  postVal["timestamp"] as? String
-//                        self.post.append(posst)
-//                    }
-//                    self.lastObjectKey = postsnap.first?.key
-//                    self.lastTimestamp = self.post[0].timeStamp
-//                    hideActivityView()
-//                    self.collectionView.isHidden = false
-//                    self.collectionView.reloadData()
-//                })
-//            ref.removeAllObservers()
-//
-//        }else{
-//
-//            ref.child("posts").queryOrdered(byChild: "timestamp")
-//                .queryEnding(atValue: self.lastTimestamp)
-//                .queryLimited(toLast: 2).observeSingleEvent(of: .value, with: { snapshot in
-//                    let postsnap = snapshot.value as! [String : AnyObject]
-//                    print(postsnap.first?.key as String!,self.lastObjectKey as String!)
-//                    for (key,postVal) in postsnap{
-//                        let lastkey = self.lastObjectKey as String!
-//                        let firstKey = key
-//                        if lastkey != firstKey {
-//                            let posst = Posts()
-//                            posst.author = postVal["author"] as? String
-//                            posst.likes = postVal["likes"] as? Int
-//                            posst.pathToImage = postVal["pathToImage"] as? String
-//                            posst.postID = postVal["postID"] as! String
-//                            posst.timeStamp =  postVal["timestamp"] as? String
-//                            self.post.append(posst)
-//                        }
-//                    }
-//                    self.post = self.post.sorted(by: { $0.timeStamp > $1.timeStamp })
-//                    self.lastObjectKey = self.post.last?.postID
-//                    self.lastTimestamp = self.post.last?.timeStamp
-//                    hideActivityView()
-//                })
-//            ref.removeAllObservers()
-//        }
+
+        if lastTimestamp == nil{
+            ref.child("posts")
+                .queryOrdered(byChild: "timestamp")
+                .queryLimited(toLast: 10)
+                .observeSingleEvent(of: .value, with: { snapshot in
+                    let postsnap = snapshot.value as! [String : AnyObject]
+
+                    for (_,postVal) in postsnap{
+                        let posst = Posts()
+                        posst.author = postVal["author"] as? String
+                        posst.likes = postVal["likes"] as? Int
+                        posst.pathToImage = postVal["pathToImage"] as? String
+                        posst.postID = postVal["postID"] as! String
+                        posst.timeStamp =  postVal["timestamp"] as? String
+                        posst.userIDPost = postVal["userID"] as? String
+                        print(posst.postID as String)
+                        ref.child("user").queryOrdered(byChild: "uid")
+                            .queryEqual(toValue: posst.userIDPost)
+                            .observeSingleEvent(of: .value, with: { snapshot in
+                                print(snapshot.value!)
+                                let postsnap = snapshot.value as! [String : AnyObject]
+                                if postsnap.count<2 {
+                                    for (_,postVal) in postsnap{
+                                        let userPost = Users()
+                                        userPost.fullName = postVal["username"] as? String
+                                        userPost.imagePath = postVal["userProfileImageURL"] as? String
+                                        posst.user = userPost
+                                        self.post.append(posst)
+                                    }
+                                }
+                                self.lastObjectKey = postsnap.first?.key
+                                self.lastTimestamp = self.post[0].timeStamp
+                                hideActivityView()
+                                self.collectionView.isHidden = false
+                                self.collectionView.reloadData()
+                            })
+                    }
+                    
+                })
+            ref.removeAllObservers()
+
+        }else{
+
+            ref.child("posts").queryOrdered(byChild: "timestamp")
+                .queryEnding(atValue: self.lastTimestamp)
+                .queryLimited(toLast: 2).observeSingleEvent(of: .value, with: { snapshot in
+                    let postsnap = snapshot.value as! [String : AnyObject]
+                    print(postsnap.first?.key as String!,self.lastObjectKey as String!)
+                    for (key,postVal) in postsnap{
+                        let lastkey = self.lastObjectKey as String!
+                        let firstKey = key
+                        if lastkey != firstKey {
+                            let posst = Posts()
+                            posst.author = postVal["author"] as? String
+                            posst.likes = postVal["likes"] as? Int
+                            posst.pathToImage = postVal["pathToImage"] as? String
+                            posst.postID = postVal["postID"] as! String
+                            posst.timeStamp =  postVal["timestamp"] as? String
+                            self.post.append(posst)
+                        }
+                    }
+                    self.post = self.post.sorted(by: { $0.timeStamp > $1.timeStamp })
+                    self.lastObjectKey = self.post.last?.postID
+                    self.lastTimestamp = self.post.last?.timeStamp
+                    hideActivityView()
+                })
+            ref.removeAllObservers()
+        }
     }
 }
 
@@ -123,6 +131,12 @@ extension SuggestionViewController : UICollectionViewDelegate,UICollectionViewDa
     
     private func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier:"header", for: indexPath as IndexPath) as! HeaderView
+        supplementaryView.imgUserProfile.af_setImage(
+            withURL: URL(string: self.post[indexPath.section].user.imagePath)!,
+            placeholderImage: #imageLiteral(resourceName: "pictureOverlay"),
+            filter: AspectScaledToFillSizeWithRoundedCornersFilter(size: (supplementaryView.imgUserProfile.frame.size), radius: 0.0),
+            imageTransition: .crossDissolve(0.2)
+        )
         return supplementaryView
     }
     
@@ -136,6 +150,9 @@ extension SuggestionViewController : UICollectionViewDelegate,UICollectionViewDa
             filter: AspectScaledToFillSizeWithRoundedCornersFilter(size: (cell?.imgViewSqure.frame.size)!, radius: 0.0),
             imageTransition: .crossDissolve(0.2)
         )
+        
+        cell?.lblUserProfileName.text = self.post[indexPath.section].user.fullName
+
         return cell!
     }
     

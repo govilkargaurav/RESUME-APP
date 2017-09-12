@@ -28,6 +28,7 @@
 		F405BF2D1F532F19003A2CA9 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405BF2C1F532F19003A2CA9 /* CustomTextField.swift */; };
 		F40C8AF71F4F5112009BD779 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F40C8AF61F4F5100009BD779 /* GoogleService-Info.plist */; };
 		F44033611F57C3AE0096772B /* DOAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44033601F57C3AD0096772B /* DOAlertController.swift */; };
+		F44560D91F670F2800ACCCA6 /* RoundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44560D81F670F2800ACCCA6 /* RoundImage.swift */; };
 		F44F41C91F48AB1300F6023A /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44F41C51F48AB1300F6023A /* Extention.swift */; };
 		F44F41CA1F48AB1300F6023A /* imageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44F41C61F48AB1300F6023A /* imageExtension.swift */; };
 		F44F41CB1F48AB1300F6023A /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44F41C71F48AB1300F6023A /* RoundButton.swift */; };
@@ -91,6 +92,7 @@
 		F405BF2C1F532F19003A2CA9 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		F40C8AF61F4F5100009BD779 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F44033601F57C3AD0096772B /* DOAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DOAlertController.swift; sourceTree = "<group>"; };
+		F44560D81F670F2800ACCCA6 /* RoundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImage.swift; sourceTree = "<group>"; };
 		F44F41C51F48AB1300F6023A /* Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extention.swift; sourceTree = "<group>"; };
 		F44F41C61F48AB1300F6023A /* imageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imageExtension.swift; sourceTree = "<group>"; };
 		F44F41C71F48AB1300F6023A /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				F44F41C81F48AB1300F6023A /* roundedBorderView.swift */,
 				F4033D401F4BEF0700931CAF /* TxtViewExtn.swift */,
 				F405BF2C1F532F19003A2CA9 /* CustomTextField.swift */,
+				F44560D81F670F2800ACCCA6 /* RoundImage.swift */,
 			);
 			path = "Extentions ";
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 				F49CD3CD1F61C78E0059741B /* FeedCell.swift in Sources */,
 				F4633A2E1F49872B0088B005 /* HomeCollectionView.swift in Sources */,
 				F47DC86C1F5A931800C19ECF /* Error.swift in Sources */,
+				F44560D91F670F2800ACCCA6 /* RoundImage.swift in Sources */,
 				F405BF2D1F532F19003A2CA9 /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,6 +10,7 @@ import UIKit
 
 class FeedCell: UICollectionViewCell {
     
+    @IBOutlet weak var lblUserProfileName: UILabel!
     @IBOutlet weak var imgViewSqure: UIImageView!
     override init(frame: CGRect) {
         super.init(frame: frame)
