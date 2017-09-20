@@ -15,8 +15,6 @@ let identifier = "CellIdentifier"
 class SuggestionViewController: UIViewController {
     
 
-    @IBOutlet weak var imgViewUserProfile: RoundImage!
-    @IBOutlet weak var lblUserProfileName: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     var post = [Posts]()
     var users = [Users]()
@@ -27,8 +25,8 @@ class SuggestionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: identifier)
         self.navigationController?.navigationBar.tintColor = UIColor.white
+        
         fetchPosts()
         // Do any additional setup after loading the view.
     }
@@ -58,6 +56,7 @@ class SuggestionViewController: UIViewController {
                         posst.postID = postVal["postID"] as! String
                         posst.timeStamp =  postVal["timestamp"] as? String
                         posst.userIDPost = postVal["userID"] as? String
+                        posst.textPosted = postVal["postText"] as? String
                         print(posst.postID as String)
                         ref.child("user").queryOrdered(byChild: "uid")
                             .queryEqual(toValue: posst.userIDPost)
@@ -75,6 +74,7 @@ class SuggestionViewController: UIViewController {
                                 }
                                 self.lastObjectKey = postsnap.first?.key
                                 self.lastTimestamp = self.post[0].timeStamp
+                                self.post = self.post.sorted(by: { $0.timeStamp > $1.timeStamp })
                                 hideActivityView()
                                 self.collectionView.isHidden = false
                                 self.collectionView.reloadData()
@@ -101,6 +101,7 @@ class SuggestionViewController: UIViewController {
                             posst.pathToImage = postVal["pathToImage"] as? String
                             posst.postID = postVal["postID"] as! String
                             posst.timeStamp =  postVal["timestamp"] as? String
+                            posst.textPosted = postVal["postText"] as? String
                             self.post.append(posst)
                         }
                     }
@@ -117,10 +118,11 @@ class SuggestionViewController: UIViewController {
 
 // MARK : UICollectionView & Flowlayout
 
-extension SuggestionViewController : UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+extension SuggestionViewController : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let picDimension = self.view.frame.size.width
+      
         return CGSize(width: picDimension, height: picDimension)
     }
     
@@ -129,39 +131,36 @@ extension SuggestionViewController : UICollectionViewDelegate,UICollectionViewDa
         return UIEdgeInsetsMake(0, leftRightInset, 0, leftRightInset)
     }
     
-    private func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier:"header", for: indexPath as IndexPath) as! HeaderView
-        supplementaryView.imgUserProfile.af_setImage(
-            withURL: URL(string: self.post[indexPath.section].user.imagePath)!,
-            placeholderImage: #imageLiteral(resourceName: "pictureOverlay"),
-            filter: AspectScaledToFillSizeWithRoundedCornersFilter(size: (supplementaryView.imgUserProfile.frame.size), radius: 0.0),
-            imageTransition: .crossDissolve(0.2)
-        )
-        return supplementaryView
-    }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? FeedCell
-        print(self.post[indexPath.section].pathToImage)
-        //cell?.imgViewSqure.af_setImage(withURL: URL(fileURLWithPath: self.post[indexPath.section].pathToImage))
         cell?.imgViewSqure.af_setImage(
-            withURL: URL(string: self.post[indexPath.section].pathToImage)!,
+            withURL: URL(string: self.post[indexPath.row].pathToImage)!,
             placeholderImage: #imageLiteral(resourceName: "pictureOverlay"),
             filter: AspectScaledToFillSizeWithRoundedCornersFilter(size: (cell?.imgViewSqure.frame.size)!, radius: 0.0),
             imageTransition: .crossDissolve(0.2)
         )
         
-        cell?.lblUserProfileName.text = self.post[indexPath.section].user.fullName
-
+        cell?.imgUserProfile.af_setImage(
+            withURL: URL(string: self.post[indexPath.row].user.imagePath)!,
+            placeholderImage: #imageLiteral(resourceName: "userdummy"),
+            filter: AspectScaledToFillSizeWithRoundedCornersFilter(size: (cell?.imgViewSqure.frame.size)!, radius: 0.0),
+            imageTransition: .crossDissolve(0.2)
+        )
+        
+        cell?.lblUserProfileName.text = self.post[indexPath.row].user.fullName
+        cell?.lblPostDateTime.text = self.post[indexPath.row].timeStamp
+        cell?.lblDescriptionPost.text = self.post[indexPath.row].textPosted
         return cell!
     }
     
+    
+        
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return self.post.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.post.count
+        return 1
     }
     
 }

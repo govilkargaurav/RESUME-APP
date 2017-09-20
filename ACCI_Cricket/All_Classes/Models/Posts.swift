@@ -18,6 +18,4 @@ class Posts: NSObject {
     var timeStamp : String!
     var userIDPost : String!
     var user : Users!
-    
-    
 }
